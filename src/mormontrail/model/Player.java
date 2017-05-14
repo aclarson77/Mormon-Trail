@@ -43,7 +43,7 @@ public class Player implements Serializable {
         hash = 73 * hash + Objects.hashCode(this.name);
         hash = 73 * hash + (int) (Double.doubleToLongBits(this.bestScore) ^ (Double.doubleToLongBits(this.bestScore) >>> 32));
         return hash;
-    }
+}
 
     @Override
     public String toString() {
@@ -62,7 +62,7 @@ public class Player implements Serializable {
             return false;
         }
         final Player other = (Player) obj;
-        if (Double.doubleToLongBits(this.bestScore) != Double.doubleToLongBits(other.bestScore)) {
+        if (this.bestScore != other.bestScore) {
             return false;
         }
         if (!Objects.equals(this.name, other.name)) {
