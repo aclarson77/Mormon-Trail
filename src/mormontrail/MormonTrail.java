@@ -8,6 +8,8 @@ package mormontrail;
 import mormontrail.model.Actor;
 import mormontrail.model.Game;
 import mormontrail.model.InventoryItem;
+import mormontrail.model.Location;
+import mormontrail.model.Map;
 import mormontrail.model.Player;
 import mormontrail.model.Question;
 import mormontrail.model.RandomEvent;
@@ -69,6 +71,28 @@ public static void andrewClassTest(){
 
 public static void joshuaClassTest(){
 
+    // Location Class - Joshua N.
+    Location ourLocation = new Location();
+    
+    ourLocation.setRow(10);
+    ourLocation.setColumn(10);
+    ourLocation.setVisited(5);
+    ourLocation.setAmountRemaining(5);
+    
+    String locationInfo = ourLocation.toString();
+    System.out.println(locationInfo);
+    
+    // Map Class - Joshua N.
+    Map ourMap = new Map();
+    
+    ourMap.setDescription("Here is the Map for the Mormon Pioneer Trail!");
+    ourMap.setRowCount(10);
+    ourMap.setColumnCount(10);
+    ourMap.setCurrentRow(5);
+    ourMap.setCurrentColumn(5);
+    
+    String mapInfo = ourMap.toString();
+    System.out.println(mapInfo);
 }
 
 public static void ajClassTest(){
