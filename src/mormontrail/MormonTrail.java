@@ -41,7 +41,7 @@ public static void andrewClassTest(){
     actorOne.setName("Parley Pratt");
     actorOne.setDescription("Man of God");
     actorOne.setCoordinates("Winter Quarters");
-    actorOne.setHealth("Your health gets better when you pray");
+    actorOne.setHealth(70);
     
     String actorInfo = actorOne.toString();
     System.out.println(actorInfo);
