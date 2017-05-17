@@ -18,7 +18,7 @@ public class Actor implements Serializable {
     private String name;
     private String description;
     private String coordinates;
-    private String health;
+    private int health;
 
     public Actor() {
     }
@@ -48,11 +48,11 @@ public class Actor implements Serializable {
         this.coordinates = coordinates;
     }
 
-    public String getHealth() {
+    public int getHealth() {
         return health;
     }
 
-    public void setHealth(String health) {
+    public void setHealth(int health) {
         this.health = health;
     }
 

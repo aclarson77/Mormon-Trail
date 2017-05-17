@@ -57,15 +57,15 @@ public static void andrewClassTest(){
     System.out.println(gameInfo);
     
     //InventroyItem Class
-    InventoryItem suppliesInWagaon = new InventoryItem();
+    InventoryItem suppliesInWagon = new InventoryItem();
     
-    suppliesInWagaon.setInventoryType("Hammer");
-    suppliesInWagaon.setQuantityInStock(10);
-    suppliesInWagaon.setRequiredAmount(15);
-    suppliesInWagaon.setMaxAmount(50);
-    suppliesInWagaon.setAmount(5);
+    suppliesInWagon.setInventoryType("Hammer");
+    suppliesInWagon.setQuantityInStock(10);
+    suppliesInWagon.setRequiredAmount(15);
+    suppliesInWagon.setMaxAmount(50);
+    suppliesInWagon.setAmount(5);
     
-    String suppliesInfo = suppliesInWagaon.toString();
+    String suppliesInfo = suppliesInWagon.toString();
     System.out.println(suppliesInfo);
 }
 
