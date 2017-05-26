@@ -16,10 +16,12 @@ public class InventoryItem implements Serializable {
     
     // class instance variables
     private String inventoryType;
-    private int quantityInStock;
-    private int requiredAmount;
-    private int maxAmount;
-    private int amount;
+    private int quantity; // # of units
+    private int requiredQuantity;
+    private int maxQuantity;
+    private int minQuantity;
+    private double weight;
+    private double weightPerUnit;
 
     public InventoryItem() {
     }
@@ -32,54 +34,71 @@ public class InventoryItem implements Serializable {
         this.inventoryType = inventoryType;
     }
 
-    public int getQuantityInStock() {
-        return quantityInStock;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setQuantityInStock(int quantityInStock) {
-        this.quantityInStock = quantityInStock;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
-    public int getRequiredAmount() {
-        return requiredAmount;
+    public int getRequiredQuantity() {
+        return requiredQuantity;
     }
 
-    public void setRequiredAmount(int requiredAmount) {
-        this.requiredAmount = requiredAmount;
+    public void setRequiredQuantity(int requiredQuantity) {
+        this.requiredQuantity = requiredQuantity;
     }
 
-    public int getMaxAmount() {
-        return maxAmount;
+    public int getMaxQuantity() {
+        return maxQuantity;
     }
 
-    public void setMaxAmount(int maxAmount) {
-        this.maxAmount = maxAmount;
+    public void setMaxQuantity(int maxQuantity) {
+        this.maxQuantity = maxQuantity;
     }
 
-    public int getAmount() {
-        return amount;
+    public int getMinQuantity() {
+        return minQuantity;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public void setMinQuantity(int minQuantity) {
+        this.minQuantity = minQuantity;
+    }
+    
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public double getWeightPerUnit() {
+        return weightPerUnit;
+    }
+
+    public void setWeightPerUnit(double weightPerUnit) {
+        this.weightPerUnit = weightPerUnit;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 59 * hash + Objects.hashCode(this.inventoryType);
-        hash = 59 * hash + this.quantityInStock;
-        hash = 59 * hash + this.requiredAmount;
-        hash = 59 * hash + this.maxAmount;
-        hash = 59 * hash + this.amount;
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.inventoryType);
+        hash = 97 * hash + this.quantity;
+        hash = 97 * hash + this.requiredQuantity;
+        hash = 97 * hash + this.maxQuantity;
+        hash = 97 * hash + this.minQuantity;
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.weight) ^ (Double.doubleToLongBits(this.weight) >>> 32));
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.weightPerUnit) ^ (Double.doubleToLongBits(this.weightPerUnit) >>> 32));
         return hash;
     }
 
     @Override
     public String toString() {
-        return "InventoryItem{" + "inventoryType=" + inventoryType + ", quantityInStock=" + quantityInStock + ", requiredAmount=" + requiredAmount + ", maxAmount=" + maxAmount + ", amount=" + amount + '}';
+        return "InventoryItem{" + "inventoryType=" + inventoryType + ", quantity=" + quantity + ", requiredQuantity=" + requiredQuantity + ", maxQuantity=" + maxQuantity + ", minQuantity=" + minQuantity + ", weight=" + weight + ", weightPerUnit=" + weightPerUnit + '}';
     }
-    
     
     @Override
     public boolean equals(Object obj) {
@@ -93,16 +112,22 @@ public class InventoryItem implements Serializable {
             return false;
         }
         final InventoryItem other = (InventoryItem) obj;
-        if (this.quantityInStock != other.quantityInStock) {
+        if (this.quantity != other.quantity) {
             return false;
         }
-        if (this.requiredAmount != other.requiredAmount) {
+        if (this.requiredQuantity != other.requiredQuantity) {
             return false;
         }
-        if (this.maxAmount != other.maxAmount) {
+        if (this.maxQuantity != other.maxQuantity) {
             return false;
         }
-        if (this.amount != other.amount) {
+        if (this.minQuantity != other.minQuantity) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.weight) != Double.doubleToLongBits(other.weight)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.weightPerUnit) != Double.doubleToLongBits(other.weightPerUnit)) {
             return false;
         }
         if (!Objects.equals(this.inventoryType, other.inventoryType)) {
@@ -110,6 +135,5 @@ public class InventoryItem implements Serializable {
         }
         return true;
     }
-
-          
+              
 }

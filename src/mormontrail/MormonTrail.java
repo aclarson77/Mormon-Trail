@@ -59,11 +59,13 @@ public static void andrewClassTest(){
     //InventroyItem Class
     InventoryItem suppliesInWagon = new InventoryItem();
     
-    suppliesInWagon.setInventoryType("Hammer");
-    suppliesInWagon.setQuantityInStock(10);
-    suppliesInWagon.setRequiredAmount(15);
-    suppliesInWagon.setMaxAmount(50);
-    suppliesInWagon.setAmount(5);
+    suppliesInWagon.setInventoryType("Food");
+    suppliesInWagon.setQuantity(500);
+    suppliesInWagon.setRequiredQuantity(1000);
+    suppliesInWagon.setMaxQuantity(1000);
+    suppliesInWagon.setMinQuantity(1);
+    suppliesInWagon.setWeight(200);
+    suppliesInWagon.setWeightPerUnit(2);
     
     String suppliesInfo = suppliesInWagon.toString();
     System.out.println(suppliesInfo);
