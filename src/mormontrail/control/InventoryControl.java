@@ -39,46 +39,11 @@ public class InventoryControl {
             return -1;
         }
         
-        double addFoodToInv = currentFood + (newFood * 2);
-        double addAmmoToInv = currentAmmo + (newAmmo * 0.25);
-        double addClothesToInv = currentClothes + (newClothes * 5);
+        double addFoodToInv = currentFood + (newFood * 2); // 2 lbs
+        double addAmmoToInv = currentAmmo + (newAmmo * 0.25); // 0.25 lbs
+        double addClothesToInv = currentClothes + (newClothes * 5); // 5 lbs
         double addItemsToInv = addFoodToInv + addAmmoToInv + addClothesToInv;
         
         return addItemsToInv;
     }
 }
-        
-//    if (newFood >= 0 && newFood <= 1000){
-//        return currentFood + (newFood * 2); // 2 lbs
-//    }
-//        
-//    if (currentFood < 0 || currentFood > 1000){
-//        return -1;
-//    }
-//    else{
-//        return currentFood;
-//    }
-// 
-//    if (newAmmo >= 0 && newAmmo <= 1000){
-//        return currentAmmo + (newAmmo * 0.25); //0.25 lbs
-//    }
-//        
-//    if (currentAmmo < 0 || currentAmmo > 1000){
-//        return -1;
-//    }
-//    else{
-//        return currentAmmo;
-//    }
-// 
-//    if (newClothes >= 0 && newClothes <= 1000){
-//        return currentClothes += (newClothes * 5); // 5 lbs
-//    }
-//        
-//    if (currentClothes < 0 || currentClothes > 1000){
-//        return -1;
-//    }
-//    else
-//        return currentClothes;
-//
-//    }
-//}
