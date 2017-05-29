@@ -5,45 +5,74 @@
  */
 package mormontrail.control;
 
+import mormontrail.model.InventoryItem;
+
 /**
  *
  * @author andre
  */
 public class InventoryControl {
     
-    public double addToInventory(double currentFood, double newFood, 
-            double currentAmmo, double newAmmo, double currentClothes, 
-            double newClothes){
+    public double addToInventory(InventoryItem currentItem, InventoryItem newItem){
         
-        if (currentFood < 0 || currentFood > 1000){
-            return -1;
+        if (newItem.getInventoryType() != currentItem.getInventoryType())
+        {
+           return -1;
+        }
+
+        if (currentItem.getQuantity() < currentItem.getMinQuantity()
+            || currentItem.getQuantity() > currentItem.getMaxQuantity())
+        {
+           return -2;
         }
         
-        if (newFood < 1 || newFood > 1000){
-            return -1;
+        if (newItem.getQuantity() < newItem.getMinQuantity() || newItem.getQuantity() > newItem.getMaxQuantity())
+        {
+           return -3;
         }
         
-        if (currentAmmo < 0 || currentAmmo > 100){
-            return -1;
+        if (newItem.getQuantity() + currentItem.getQuantity() > currentItem.getMaxQuantity())
+        {
+            return -4;
         }
         
-        if (newAmmo < 1 || newAmmo > 100){
-            return -1;
-        }
-            
-        if (currentClothes < 0 || currentClothes > 100){
-            return -1;
-        }
+        double addItemsToInv = currentItem.getWeight() + newItem.getQuantity() * newItem.getWeightPerUnit();
         
-        if (newClothes < 1 || newClothes > 100){
-            return -1;
-        }
+        return addItemsToInv;
         
+        /*
         double addFoodToInv = currentFood + (newFood * 2); // 2 lbs
         double addAmmoToInv = currentAmmo + (newAmmo * 0.25); // 0.25 lbs
         double addClothesToInv = currentClothes + (newClothes * 5); // 5 lbs
         double addItemsToInv = addFoodToInv + addAmmoToInv + addClothesToInv;
-        
-        return addItemsToInv;
+        */
     }
+    
+    public double removeFromInventory(InventoryItem currentItem, InventoryItem removeItem){
+    
+        if (removeItem.getInventoryType() != currentItem.getInventoryType())
+        {
+           return -1;
+        }
+
+        if (currentItem.getQuantity() < currentItem.getMinQuantity() 
+            || currentItem.getQuantity() > currentItem.getMaxQuantity())
+        {
+           return -2;
+        }
+        
+        if (removeItem.getQuantity() < removeItem.getMinQuantity() || removeItem.getQuantity() > removeItem.getMaxQuantity())
+        {
+           return -3;
+        }
+        
+        if (currentItem.getQuantity() - removeItem.getQuantity() < currentItem.getMaxQuantity())
+        {
+            return -4;
+        }
+        
+        double removeItemsFromInv = currentItem.getWeight() - removeItem.getQuantity() * removeItem.getWeightPerUnit();
+        
+        return removeItemsFromInv;
+}
 }
