@@ -24,9 +24,35 @@ public class InventoryItem implements Serializable {
     private double weightPerUnit;
 
     public InventoryItem() {
+        
     }
     
-    public String getInventoryType() {
+     public InventoryItem(String inventoryType, int quantity, double weightPerUnit) {
+        
+        this.minQuantity = 0;
+        this.inventoryType = inventoryType;
+        this.quantity = quantity;
+        this.weight = quantity * weightPerUnit;
+        this.weightPerUnit = weightPerUnit;
+        
+        if (inventoryType == "food")
+        {
+            this.maxQuantity = 1000;
+        }
+        else if (inventoryType == "clothes")
+        {
+            this.maxQuantity = 100;
+        }
+        else if (inventoryType == "ammo")
+        {
+            this.maxQuantity = 100;
+        }
+        else {
+            this.maxQuantity = 10;
+        }
+    }
+    
+    public String getInventoryType() {        
         return inventoryType;
     }
 
@@ -34,8 +60,8 @@ public class InventoryItem implements Serializable {
         this.inventoryType = inventoryType;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getQuantity() {        
+        return this.quantity;
     }
 
     public void setQuantity(int quantity) {
@@ -51,15 +77,15 @@ public class InventoryItem implements Serializable {
     }
 
     public int getMaxQuantity() {
-        return maxQuantity;
-    }
+            return this.maxQuantity;
+        }
 
     public void setMaxQuantity(int maxQuantity) {
         this.maxQuantity = maxQuantity;
     }
 
-    public int getMinQuantity() {
-        return minQuantity;
+    public int getMinQuantity() {        
+        return this.minQuantity;
     }
 
     public void setMinQuantity(int minQuantity) {
@@ -67,7 +93,7 @@ public class InventoryItem implements Serializable {
     }
     
     public double getWeight() {
-        return weight;
+        return this.weight;
     }
 
     public void setWeight(double weight) {
@@ -75,7 +101,7 @@ public class InventoryItem implements Serializable {
     }
 
     public double getWeightPerUnit() {
-        return weightPerUnit;
+        return this.weightPerUnit;
     }
 
     public void setWeightPerUnit(double weightPerUnit) {

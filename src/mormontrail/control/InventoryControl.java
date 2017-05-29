@@ -13,8 +13,8 @@ import mormontrail.model.InventoryItem;
  */
 public class InventoryControl {
     
-    public double addToInventory(InventoryItem currentItem, InventoryItem newItem){
-        
+    static public double addToInventory(InventoryItem currentItem, InventoryItem newItem){
+                        
         if (newItem.getInventoryType() != currentItem.getInventoryType())
         {
            return -1;
