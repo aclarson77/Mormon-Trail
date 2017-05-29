@@ -17,7 +17,7 @@ public class InventoryItem implements Serializable {
     // class instance variables
     private String inventoryType;
     private int quantity; // # of units
-    private int requiredQuantity;
+    private int requiredQuantity; // remove required quantity?
     private int maxQuantity;
     private int minQuantity;
     private double weight;
@@ -53,7 +53,7 @@ public class InventoryItem implements Serializable {
     }
     
     public String getInventoryType() {        
-        return inventoryType;
+        return this.inventoryType;
     }
 
     public void setInventoryType(String inventoryType) {
@@ -77,8 +77,8 @@ public class InventoryItem implements Serializable {
     }
 
     public int getMaxQuantity() {
-            return this.maxQuantity;
-        }
+        return this.maxQuantity;
+    }
 
     public void setMaxQuantity(int maxQuantity) {
         this.maxQuantity = maxQuantity;
