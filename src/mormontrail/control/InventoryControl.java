@@ -48,7 +48,7 @@ public class InventoryControl {
         */
     }
     
-    public double removeFromInventory(InventoryItem currentItem, InventoryItem removeItem){
+    static public double removeFromInventory(InventoryItem currentItem, InventoryItem removeItem){
     
         if (removeItem.getInventoryType() != currentItem.getInventoryType())
         {
@@ -66,7 +66,7 @@ public class InventoryControl {
            return -3;
         }
         
-        if (currentItem.getQuantity() - removeItem.getQuantity() < currentItem.getMaxQuantity())
+        if (currentItem.getQuantity() - removeItem.getQuantity() < currentItem.getMinQuantity())
         {
             return -4;
         }
