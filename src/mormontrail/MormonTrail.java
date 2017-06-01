@@ -14,6 +14,7 @@ import mormontrail.model.Player;
 import mormontrail.model.Question;
 import mormontrail.model.RandomEvent;
 import mormontrail.model.RegularSceneType;
+import mormontrail.view.StartProgramView;
 
 /**
  *
@@ -21,7 +22,10 @@ import mormontrail.model.RegularSceneType;
  */
 public class MormonTrail {
 
-
+    private static Game currentGame = null;
+    private static Player player = null;
+    
+/*
 public static void teamClassTest(){
     Player playerOne = new Player();
         
@@ -129,17 +133,35 @@ public static void ajClassTest(){
     String eventInfo = eventOne.toString();
     System.out.println(eventInfo);
 }
+    
+    */
+    
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        teamClassTest();
-        andrewClassTest();
-        joshuaClassTest();
-        ajClassTest();
-        
-        
-        
+        // create StartProgramViewOrig and display the start program view
+        StartProgramView startProgramView = new StartProgramView();
+        startProgramView.displayStartProgramView();
     }
+
+    public static Game getCurrentGame() {
+        return currentGame;
+    }
+
+     public static void setCurrentGame(Game currentGame) {
+        MormonTrail.currentGame = currentGame;
+    }
+    
+    public static Player getPlayer() {
+        return player;
+    }
+
+    public static void setPlayer(Player player) {
+        MormonTrail.player = player;
+    }
+    
+    
     
 }
