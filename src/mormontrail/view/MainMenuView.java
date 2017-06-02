@@ -7,6 +7,7 @@ package mormontrail.view;
 
 import java.util.Scanner;
 import mormontrail.MormonTrail;
+import mormontrail.model.Player;
 
 /**
  *
@@ -95,8 +96,8 @@ public class MainMenuView {
     private void startNewGame() {
         GameControl.createNewGame(MormonTrail.getPlayer());
         
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
+      //  GameMenuView gameMenu = new GameMenuView();
+      //  gameMenu.displayMenu();
     }
 
     private void startExistingGame() {
@@ -104,7 +105,17 @@ public class MainMenuView {
     }
 
     private void displayHelpMenu() {
-       System.out.println("*** displayHelpMenu function called ***");
+        
+       
+        System.out.println("\n What do you need help with?"
+                          );
+
+        HelpMenuView helpMenuView = new HelpMenuView();        
+        helpMenuView.displayHelpMenuView();        
+    
+        
+        
+      // System.out.println("*** displayHelpMenu function called ***");
     }
 
     private void saveGame() {
