@@ -28,7 +28,7 @@ public class HelpMenuView {
     }
     
     public void displayHelpMenuView() {
-        boolean done = false;
+       boolean done = false;
         do {
             String menuOption = this.getMenuOption();
             if (menuOption.toUpperCase().equals("Q"))
@@ -36,7 +36,12 @@ public class HelpMenuView {
             
             done = this.doAction(menuOption);
         } while (!done);
+        
+
+       
+
     }
+      
 
     private String getMenuOption() {
     
@@ -96,7 +101,9 @@ public class HelpMenuView {
     }
 
     private void back() {
-        System.out.println("*** back function called ***");
+        MainMenuView mainMenuView = new MainMenuView();
+                
+        mainMenuView.displayMainMenuView();
     }
     
 }
