@@ -80,8 +80,7 @@ public class HelpMenuView {
                 this.goal();
                 break;
             case "B":
-                this.back();
-                break;
+                return true;
 
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
@@ -99,11 +98,4 @@ public class HelpMenuView {
     private void goal() {
         System.out.println("*** goal function called ***");
     }
-
-    private void back() {
-        MainMenuView mainMenuView = new MainMenuView();
-                
-        mainMenuView.displayMainMenuView();
-    }
-    
 }
