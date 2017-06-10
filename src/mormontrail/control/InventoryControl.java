@@ -13,7 +13,8 @@ import mormontrail.model.InventoryItem;
  */
 public class InventoryControl {
     
-    static public double addToInventory(InventoryItem currentItem, InventoryItem newItem){
+    static public double addToInventory(InventoryItem currentItem,
+        InventoryItem newItem){
                         
         if (newItem.getInventoryType() != currentItem.getInventoryType())
         {
@@ -26,27 +27,30 @@ public class InventoryControl {
            return -2;
         }
         
-        if (newItem.getQuantity() < newItem.getMinQuantity() || newItem.getQuantity() > newItem.getMaxQuantity())
+        if (newItem.getQuantity() < newItem.getMinQuantity() 
+            || newItem.getQuantity() > newItem.getMaxQuantity())
         {
            return -3;
         }
         
-        if (newItem.getQuantity() + currentItem.getQuantity() > currentItem.getMaxQuantity())
+        if (newItem.getQuantity() + currentItem.getQuantity() 
+            > currentItem.getMaxQuantity())
         {
             return -4;
         }
         
-        double addItemsToInv = currentItem.getWeight() + newItem.getQuantity() * newItem.getWeightPerUnit();
+        double addItemsToInv = currentItem.getWeight() + newItem.getQuantity()
+            * newItem.getWeightPerUnit();
         
         return addItemsToInv;
-        
-        /*
+    }
+    
+            /*
         double addFoodToInv = currentFood + (newFood * 2); // 2 lbs
         double addAmmoToInv = currentAmmo + (newAmmo * 0.25); // 0.25 lbs
         double addClothesToInv = currentClothes + (newClothes * 5); // 5 lbs
         double addItemsToInv = addFoodToInv + addAmmoToInv + addClothesToInv;
         */
-    }
     
     static public double removeFromInventory(InventoryItem currentItem, InventoryItem removeItem){
     

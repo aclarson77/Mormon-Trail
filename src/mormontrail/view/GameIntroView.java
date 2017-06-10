@@ -74,7 +74,7 @@ public class GameIntroView {
         
         switch (choice) {
             case "H":
-                this.displayHelpMenu(); // return true to Help Menu?
+                this.displayHelpMenu();
                 break;
             case "C":
                 this.registerNames();
@@ -94,19 +94,7 @@ public class GameIntroView {
 
         HelpMenuView helpMenuView = new HelpMenuView();
         helpMenuView.displayHelpMenuView();
-        
-      // System.out.println("*** displayHelpMenu function called ***");
     }
-    
-    
-
-//    private void about() {
-//        System.out.println("*** about function called ***");
-//    }
-//
-//    private void goal() {
-//        System.out.println("*** goal function called ***");
-//    }
 
     private void registerNames() {
         
