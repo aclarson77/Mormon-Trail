@@ -98,7 +98,10 @@ public class MainMenuView {
     }
 
     private void startExistingGame() {
-        System.out.println("*** startExistingGame function called ***");
+        InGameMenu ingameMenu = new InGameMenu();
+        ingameMenu.displayInGameMenu();
+        
+        //System.out.println("*** startExistingGame function called ***");
     }
 
     private void displayHelpMenu() {
