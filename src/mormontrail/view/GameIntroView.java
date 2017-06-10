@@ -8,28 +8,36 @@ package mormontrail.view;
 import java.util.Scanner;
 
 /**
- *
- * @author Andrew
+ * @author Joshua
  */
-public class MainMenuView {
-
-    private String menu;
+public class GameIntroView {
     
-    public MainMenuView(){
-        this.menu = "\n"
+    private String gameMenu;
+    
+    public GameIntroView(){
+        
+        System.out.println(
+        "\n**************************************************************"
+        +"\n*                                                           *"       
+        +"\n* Introduce the end user to the Pioneer Trek and the        *"
+        +"\n* situation leading up the exodus, as well as the option to *"
+        +"\n* Register - naming your actor - to join a Company.         *"
+        +"\n*                                                           *"
+        +"\n*************************************************************"
+        );
+        
+        this.gameMenu = "\n"
                   + "\n--------------------------------------" 
-                  + "\n| Main Menu"
+                  + "\n| Introduction Menu"
                   + "\n--------------------------------------"
-                  + "\nN - Start new game"
-                  + "\nG - Get and start saved game"
                   + "\nH - Get help on how to play the game"
-                  + "\nS - Save game"
-                  + "\nQ - Quit"
+                  + "\nC - Continue to Actor Menu/Register with a Company"
+                  + "\nB - Back to main menu"
                   + "\n--------------------------------------";
     }
     
-    public void displayMainMenuView() {
-        boolean done = false;
+    public void displayGameIntroView() {
+       boolean done = false;
         do {
             String menuOption = this.getMenuOption();
             if (menuOption.toUpperCase().equals("Q"))
@@ -40,13 +48,13 @@ public class MainMenuView {
     }
 
     private String getMenuOption() {
-        
+    
         Scanner keyboard = new Scanner(System.in);
         String value = "";
         boolean valid = false;
         
         while (!valid) {
-            System.out.println("\n" + this.menu);
+            System.out.println("\n" + this.gameMenu);
             
             value = keyboard.nextLine();
             value = value.trim();
@@ -55,55 +63,33 @@ public class MainMenuView {
                 System.out.println("\nInvalid value: value can not be blank");
                 continue;
             }
-            
             break;
-            
         }
-        
         return value;
-        
-    }
+        }
 
-    public boolean doAction(String choice) {
-        
+    private boolean doAction(String choice) {
+    
         choice = choice.toUpperCase();
         
         switch (choice) {
-            case "N":
-                this.startNewGame();
-                break;
-            case "G":
-                this.startExistingGame();
-                break;
             case "H":
-                this.displayHelpMenu();
+                this.displayHelpMenu(); // return true to Help Menu?
                 break;
-            case "S":
-                this.saveGame();
+            case "C":
+                this.registerNames();
                 break;
+            case "B":
+                return true;
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
                 break;
-        
     }
         return false;
-        
     }
-
-    private void startNewGame() {
-        //GameIntroView.createNewGame(MormonTrail.getPlayer());
-        
-        GameIntroView gameMenu = new GameIntroView();
-        gameMenu.displayGameIntroView();
-    }
-
-    private void startExistingGame() {
-        System.out.println("*** startExistingGame function called ***");
-    }
-
+    
     private void displayHelpMenu() {
         
-       
         System.out.println("\n What do you need help with?");
 
         HelpMenuView helpMenuView = new HelpMenuView();
@@ -111,10 +97,22 @@ public class MainMenuView {
         
       // System.out.println("*** displayHelpMenu function called ***");
     }
-
-    private void saveGame() {
-        System.out.println("*** startSaveGame function called ***");
-    }
     
-}
+    
 
+//    private void about() {
+//        System.out.println("*** about function called ***");
+//    }
+//
+//    private void goal() {
+//        System.out.println("*** goal function called ***");
+//    }
+
+    private void registerNames() {
+        
+        System.out.println("\n What do you need help with?");
+
+        RegisterNames registerName = new RegisterNames();
+        registerName.displayRegisterNames();
+    }
+}

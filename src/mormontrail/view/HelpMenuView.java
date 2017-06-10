@@ -14,7 +14,6 @@ import java.util.Scanner;
 public class HelpMenuView {
     
     private String helpmenu;
-    private String promptMessage;
     
     public HelpMenuView(){
         this.helpmenu = "\n"
