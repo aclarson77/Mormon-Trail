@@ -11,12 +11,10 @@ import java.util.Scanner;
  *
  * @author Andrew
  */
-public class InGameMenu {
-    private String ingamemenu;
-    private String promptMessage;
+public class InGameMenu extends View {
     
-    public InGameMenu(){
-        this.ingamemenu = "\n"
+    public InGameMenu (){
+         super("\n"
                   + "\n--------------------------------------" 
                   + "\n| Mormon Oregon Trail"
                   + "\n--------------------------------------"
@@ -26,55 +24,21 @@ public class InGameMenu {
                   + "\nW - Display Wagon Status"
                   + "\nT - Talk to People"
                   + "\nC - Scavenge for Supplies"
-                  + "\nP - Purchase Supplies"
+                  + "\nP - Purchase Supplies (at store, if at beginning of trail)" //
+                  + "\nB - Buy Supplies (at fort, if along the trail)"
                   + "\nL - Leave Items Behind"
                   + "\nS - Save Game"
-                  + "\nB - Back to main menu"
-                  + "\n--------------------------------------";
+                  + "\nQ - Back to main menu"
+                  + "\n--------------------------------------");
     }
     
-    public void displayInGameMenu() {
-       boolean done = false;
-        do {
-            String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals("Q"))
-                return;
-            
-            done = this.doAction(menuOption);
-        } while (!done);
-    }
-      
-
-    private String getMenuOption() {
+   
+    @Override
+    public boolean doAction(String value) {
     
-        Scanner keyboard = new Scanner(System.in);
-        String value = "";
-        boolean valid = false;
+        value = value.toUpperCase();
         
-        while (!valid) {
-            System.out.println("\n" + this.ingamemenu);
-            
-            value = keyboard.nextLine();
-            value = value.trim();
-            
-            if (value.length() < 1) {
-                System.out.println("\nInvalid value: value can not be blank");
-                continue;
-            }
-            
-            break;
-            
-        }
-        
-        return value;
-        
-        }
-
-    private boolean doAction(String choice) {
-    
-        choice = choice.toUpperCase();
-        
-        switch (choice) {
+        switch (value) {
             case "A":
                 this.advanceTrail();
                 break;
@@ -96,16 +60,18 @@ public class InGameMenu {
             case "P":
                 this.purchaseSupplies();
                 break;
+            case "B":
+                this.buySupplies();
+                break;
             case "L":
                 this.leaveItems();
                 break;
             case "S":
                 this.saveGame();
                 break;
-            case "B":
+            case "Q":
                 this.backToMainMenu();
-                break;
-                
+                break;   
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
                 break;
@@ -144,17 +110,20 @@ public class InGameMenu {
                           );
 
         Store store = new Store();
-        store.displayStore();
-        
-        
-
-     
+        store.display();
     }
+    
+    private void buySupplies() {
+        System.out.println("\n You enter the fort."
+                          );
+
+        Fort fort = new Fort();
+        fort.display();}
 
     private void leaveItems() {
 
         LeaveItems leaveItems = new LeaveItems();
-        leaveItems.displayLeaveItems();
+        leaveItems.display();
     }
     
     private void saveGame() {
@@ -164,10 +133,5 @@ public class InGameMenu {
     private void backToMainMenu() {
         System.out.println("*** backToMainMenu function called ***");
     }
-
-    
-
-    
-
    
 }
