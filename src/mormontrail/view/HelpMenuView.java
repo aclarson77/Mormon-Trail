@@ -11,76 +11,32 @@ import java.util.Scanner;
  *
  * @author Andrew
  */
-public class HelpMenuView {
+public class HelpMenuView extends View {
     
-    private String helpmenu;
-    
+    //add how to move stub, 
     public HelpMenuView(){
-        this.helpmenu = "\n"
-                  + "\n--------------------------------------" 
-                  + "\n| Help Menu"
-                  + "\n--------------------------------------"
-                  + "\nA - About MormonTrail"
-                  + "\nG - Goal of the game"
-                  + "\nB - Back to main menu"
-                  + "\n--------------------------------------";
+        super("\n"
+                + "\n--------------------------------------" 
+                + "\n| Help Menu"
+                + "\n--------------------------------------"
+                + "\nA - About the Mormon Trail"
+                + "\nG - Goal of the Game"
+                + "\nQ - Quit to Previous Menu"
+                + "\n--------------------------------------");
     }
+
+    @Override
+    public boolean doAction(String value) {
     
-    public void displayHelpMenuView() {
-       boolean done = false;
-        do {
-            String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals("Q"))
-                return;
-            
-            done = this.doAction(menuOption);
-        } while (!done);
+        value = value.toUpperCase();
         
-
-       
-
-    }
-      
-
-    private String getMenuOption() {
-    
-        Scanner keyboard = new Scanner(System.in);
-        String value = "";
-        boolean valid = false;
-        
-        while (!valid) {
-            System.out.println("\n" + this.helpmenu);
-            
-            value = keyboard.nextLine();
-            value = value.trim();
-            
-            if (value.length() < 1) {
-                System.out.println("\nInvalid value: value can not be blank");
-                continue;
-            }
-            
-            break;
-            
-        }
-        
-        return value;
-        
-        }
-
-    private boolean doAction(String choice) {
-    
-        choice = choice.toUpperCase();
-        
-        switch (choice) {
+        switch (value) {
             case "A":
                 this.about();
                 break;
             case "G":
                 this.goal();
                 break;
-            case "B":
-                return true;
-
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
                 break;
@@ -90,11 +46,17 @@ public class HelpMenuView {
         
         }
 
+    //do text
     private void about() {
-        System.out.println("*** about function called ***");
+        System.out.println("Name of Game, Authors, History of Pioneer Trek");
     }
 
+    //do text
     private void goal() {
         System.out.println("*** goal function called ***");
+    }
+
+    private void previous() {
+        System.out.println("*** previous function called ***");
     }
 }

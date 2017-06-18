@@ -12,7 +12,7 @@ import mormontrail.model.Actor;
  *
  * @author Joshua
  */
-public class RegisterNames {
+public class RegisterNames extends View {
     
     private String namePrompt1;
     private String namePrompt2;
@@ -29,7 +29,7 @@ public class RegisterNames {
     
     public RegisterNames() {
         
-        this.namePrompt1 = "\n1) Please enter Wagon Leader's name (Q to Quit): ";
+        super("\n1) Please enter Wagon Leader's name (Q to Quit): ");
         this.namePrompt2 = "\n2) Please enter another name (Q to Quit): ";
         this.namePrompt3 = "\n3) Please enter another name (Q to Quit): ";
         this.namePrompt4 = "\n4) Please enter another name (Q to Quit): ";
@@ -46,40 +46,34 @@ public class RegisterNames {
         +"\n* need for yourself and those you're looking after.         *"
         +"\n*                                                           *"
         +"\n*************************************************************";
+        System.out.println(this.banner);
     }
     
-    
+    boolean getRegisterNames() {
 
-    void displayRegisterNames() {
+        //name1 = getName(this.namePrompt1);
         
-        boolean done = false;
-        
-        do {
-      
-        System.out.println(this.banner);
-        name1 = getName(this.namePrompt1);
-        
-        if (name1.toUpperCase().equals("Q"))
-            return;
+//        if (name1.toUpperCase().equals("Q"))
+//            return;
         
         name2 = getName(this.namePrompt2);
         if (name2.toUpperCase().equals("Q"))
-            return;
+            return true;
         
         name3 = getName(this.namePrompt3);
         if (name3.toUpperCase().equals("Q"))
-            return;
+            return true;
         
         name4 = getName(this.namePrompt4);
         if (name4.toUpperCase().equals("Q"))
-            return;
+            return true;
         
         name5 = getName(this.namePrompt5);
         if (name5.toUpperCase().equals("Q"))
-            return;
+            return true;
 
-        done = doAction();
-        } while(!done);
+        return false;
+//        done = doAction();
     }
     
     private String getName(String prompt) {
@@ -104,8 +98,12 @@ public class RegisterNames {
         return value;
     }
     
-    private boolean doAction() {
+    @Override
+    public boolean doAction(String value) {
         
+        name1 = value;
+        if (getRegisterNames())
+            return true;
         System.out.println("Wagon Leader: " + name1);
         System.out.println("Wagon Member #2: " + name2);
         System.out.println("Wagon Member #3: " + name3);
@@ -114,7 +112,7 @@ public class RegisterNames {
         
        
         String validation = getName("Are these names correct? (Y/N)");
-        
+        //If 'Yes', transition to Store view.
         if (validation.toUpperCase().equals("Y"))
             return true;
         else

@@ -11,6 +11,8 @@ import java.util.Scanner;
  *
  * @author Andrew
  */
+
+//InGameMenu should display after Store, as the Trek begins once supplies have been purchased.
 public class InGameMenu {
     private String ingamemenu;
     private String promptMessage;
@@ -100,7 +102,7 @@ public class InGameMenu {
                 this.leaveItems();
                 break;
             case "S":
-                this.saveGame();
+                this.saveGame(); // Currently GamesLog. GamesLog will be in MainMenuView once we hook our individual assignments.
                 break;
             case "B":
                 this.backToMainMenu();
@@ -127,11 +129,13 @@ public class InGameMenu {
     }
 
     private void wagonStatus() {
-        System.out.println("Your wagon is under contruction. It will be ready for travel along the trail once the game is up and running.");
+        System.out.println("Your wagon is under contruction. It will be ready for"
+                + " travel along the trail once the game is up and running.");
     }
 
     private void talkToPeople() {
-        System.out.println("You meet a sleep deprived programmer. He doesn't say much. You back away slowly to avoid the awkward silence.");
+        System.out.println("You meet a sleep deprived programmer. He doesn't say"
+                + " much. You back away slowly to avoid the awkward silence.");
     }
 
     private void scavengeSupplies() {
@@ -140,25 +144,23 @@ public class InGameMenu {
     
     private void purchaseSupplies() {
         
-        System.out.println("\n You enter the store."
-                          );
+        System.out.println("\n You enter the store.");
 
         Store store = new Store();
         store.displayStore();
-        
-        
-
-     
     }
 
     private void leaveItems() {
-
+        
         LeaveItems leaveItems = new LeaveItems();
         leaveItems.displayLeaveItems();
     }
     
+    //saveGame should be out of the game - in MainMenuView
     private void saveGame() {
-        System.out.println("*** saveGame function called ***");
+        //should be in MainMenuView for Recent Games
+        GamesLog gamesLog = new GamesLog();
+        gamesLog.display();
     }
 
     private void backToMainMenu() {

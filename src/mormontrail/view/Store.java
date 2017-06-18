@@ -11,9 +11,10 @@ import java.util.Scanner;
  *
  * @author Andrew
  */
+
+//Store should be right after RegisterNames
 public class Store {
     private String store;
-    private String promptMessage;
     
     public Store(){
         this.store = "\n"

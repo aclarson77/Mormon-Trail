@@ -18,10 +18,10 @@ public class MainMenuView extends View {
                   + "\n--------------------------------------" 
                   + "\n| Main Menu"
                   + "\n--------------------------------------"
-                  + "\nN - Start new game"
-                  + "\nG - Get and start saved game"
-                  + "\nH - Get help on how to play the game"
-                  + "\nS - Save game"
+                  + "\nN - Start New Game"
+                  + "\nG - Get and Start Saved Game"
+                  + "\nH - Get Help on How to Play the Game"
+                  + "\nS - Save Game"
                   + "\nQ - Quit"
                   + "\n--------------------------------------");
     }
@@ -57,7 +57,7 @@ public class MainMenuView extends View {
         //GameIntroView.createNewGame(MormonTrail.getPlayer());
         
         GameIntroView gameMenu = new GameIntroView();
-        gameMenu.displayGameIntroView();
+        gameMenu.display();
     }
 
     private void startExistingGame() {
@@ -73,7 +73,7 @@ public class MainMenuView extends View {
         System.out.println("\n What do you need help with?");
 
         HelpMenuView helpMenuView = new HelpMenuView();
-        helpMenuView.displayHelpMenuView();
+        helpMenuView.display();
         
       // System.out.println("*** displayHelpMenu function called ***");
     }
