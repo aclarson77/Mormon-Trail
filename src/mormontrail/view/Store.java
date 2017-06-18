@@ -11,70 +11,29 @@ import java.util.Scanner;
  *
  * @author Andrew
  */
-
 //Store should be right after RegisterNames
-public class Store {
-    private String store;
+public class Store extends View {
     
     public Store(){
-        this.store = "\n"
+        super("\n"
                   + "\n--------------------------------------" 
-                  + "\n| Welcome to the Mormon Store!"
+                  + "\n| Welcome to the Nauvoo Store!"
+                  + "\n| Here you will buy everything you need to begin your journy."
                   + "\n| What would you like to buy?"
                   + "\n--------------------------------------"
                   + "\nF - Food"
                   + "\nC - Clothes"
                   + "\nA - Ammo"
                   + "\nQ - Quit/Exit Store"
-                  + "\n--------------------------------------";
+                  + "\n--------------------------------------");
     }
     
-    public void displayStore() {
-       boolean done = false;
-        do {
-            String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals("Q"))
-                return;
-            
-            done = this.doAction(menuOption);
-        } while (!done);
-        
-
-       
-
-    }
-      
-
-    private String getMenuOption() {
+    @Override
+    public boolean doAction(String value) {
     
-        Scanner keyboard = new Scanner(System.in);
-        String value = "";
-        boolean valid = false;
+        value = value.toUpperCase();
         
-        while (!valid) {
-            System.out.println("\n" + this.store);
-            
-            value = keyboard.nextLine();
-            value = value.trim();
-            
-            if (value.length() < 1) {
-                System.out.println("\nInvalid value: value can not be blank");
-                continue;
-            }
-            
-            break;
-            
-        }
-        
-        return value;
-        
-        }
-
-    private boolean doAction(String choice) {
-    
-        choice = choice.toUpperCase();
-        
-        switch (choice) {
+        switch (value) {
             case "F":
                 this.buyFood();
                 break;
@@ -83,9 +42,7 @@ public class Store {
                 break;
             case "A":
                 this.buyAmmo();
-                break;
-            
-                
+                break;  
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
                 break;
@@ -106,6 +63,4 @@ public class Store {
     private void buyAmmo() {
         System.out.println("*** buyAmmo function called ***");
     }
-
-    
 }

@@ -25,6 +25,7 @@ public class HelpMenuView extends View {
                 + "\n--------------------------------------");
     }
 
+    //We do NOT need a Q, as Q is already within View Superclass
     @Override
     public boolean doAction(String value) {
     
@@ -54,9 +55,5 @@ public class HelpMenuView extends View {
     //do text
     private void goal() {
         System.out.println("*** goal function called ***");
-    }
-
-    private void previous() {
-        System.out.println("*** previous function called ***");
     }
 }

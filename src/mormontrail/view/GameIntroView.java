@@ -19,8 +19,7 @@ public class GameIntroView extends View {
                   + "\n--------------------------------------"
                   + "\nH - Get Help on How to Play the Game"
                   + "\nC - Continue to Actor Menu/Register with a Company"
-                  + "\nB - Back to Previous Menu"
-                  + "\nQ - Quit to Main Menu"
+                  + "\nQ - Quit to Previous Menu"
                   + "\n--------------------------------------");
     
         System.out.println(
@@ -46,8 +45,6 @@ public class GameIntroView extends View {
             case "C":
                 this.registerNames();
                 break;
-            case "B":
-                this.previous();
             case "Q":
                 return true;
             default:
@@ -71,9 +68,5 @@ public class GameIntroView extends View {
 
         RegisterNames registerName = new RegisterNames();
         registerName.display();
-    }
-
-    private void previous() {
-        System.out.println("*** previous function called ***");
     }
 }

@@ -22,8 +22,7 @@ public class GamesLog extends View {
                 + "\n--------------------------------------"
                 + "\nT - Top Score/Time to Beat" //Subject to change.
                 + "\nR - Recent Games"
-                + "\nB - Back to Previous Menu"
-                + "\nQ - Quit to Main Menu"
+                + "\nQ - Quit to Previous Menu"
                 + "\n--------------------------------------");
     }
 
@@ -39,8 +38,6 @@ public class GamesLog extends View {
             case "R":
                 this.recentGame();
                 break;
-            case "B":
-                this.previous();
             case "Q":
                 return true;
 
@@ -57,9 +54,5 @@ public class GamesLog extends View {
     
     private void recentGame() {
         System.out.println("*** recentGame function called ***");
-    }
-
-    private void previous() {
-        System.out.println("*** previous function called ***");
     }
 }

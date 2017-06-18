@@ -12,12 +12,11 @@ import java.util.Scanner;
  *
  * @author Andrew
  */
-public class LeaveItems {
-    private String leaveitems;
-    private String promptMessage;
+public class LeaveItems extends View {
+
     
     public LeaveItems(){
-        this.leaveitems = "\n"
+        super("\n"
                   + "\n--------------------------------------" 
                   + "\n| What would you like to abandon?"
                   + "\n--------------------------------------"
@@ -25,55 +24,15 @@ public class LeaveItems {
                   + "\nC - Clothes"
                   + "\nA - Ammo"
                   + "\nQ - Quit/Exit Store"
-                  + "\n--------------------------------------";
+                  + "\n--------------------------------------");
     }
+
+    @Override
+    public boolean doAction(String value) {
     
-    public void displayLeaveItems() {
-       boolean done = false;
-        do {
-            String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals("Q"))
-                return;
-            
-            done = this.doAction(menuOption);
-        } while (!done);
+        value = value.toUpperCase();
         
-
-       
-
-    }
-      
-
-    private String getMenuOption() {
-    
-        Scanner keyboard = new Scanner(System.in);
-        String value = "";
-        boolean valid = false;
-        
-        while (!valid) {
-            System.out.println("\n" + this.leaveitems);
-            
-            value = keyboard.nextLine();
-            value = value.trim();
-            
-            if (value.length() < 1) {
-                System.out.println("\nInvalid value: value can not be blank");
-                continue;
-            }
-            
-            break;
-            
-        }
-        
-        return value;
-        
-        }
-
-    private boolean doAction(String choice) {
-    
-        choice = choice.toUpperCase();
-        
-        switch (choice) {
+        switch (value) {
             case "F":
                 this.leaveFood();
                 break;
@@ -83,15 +42,11 @@ public class LeaveItems {
             case "A":
                 this.leaveAmmo();
                 break;
-            
-                
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
-                break;
-        
+                break; 
     }
         return false;
-        
         }
 
     private void leaveFood() {
@@ -121,22 +76,13 @@ public class LeaveItems {
                 System.out.println("\nInvalid value: cannot remove more food than in inventory");
                 continue;
             }
-            
-            
+
             newTotal = (currentFood-removeFood);
 
-            
-            
             System.out.println("\nYou now have " + newTotal + " pounds of food"
             );
-            
-
-            
-            break;
-            
-            
+            break;   
         }
-    
     }
 
     private void leaveClothes() {
