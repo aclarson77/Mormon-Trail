@@ -15,7 +15,12 @@ public class Location implements Serializable {
     
     private int row;
     private int column;
-    private int visited;
+    private boolean visited;
+    
+    //difference betwen Scene and RegularSceneType?
+    private Scene scene;
+    private ArrayList<Actor> actors;
+    // do we need this?
     private double amountRemaining;
 
     public Location() {
@@ -41,8 +46,24 @@ public class Location implements Serializable {
         return visited;
     }
 
-    public void setVisited(int visited) {
+    public void setVisited(boolean visited) {
         this.visited = visited;
+    }
+    
+    public Scene getScene() {
+        return scene;
+    }
+
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
+
+    public <any> getActors() {
+        return actors;
+    }
+
+    public void setActors(<any> actors) {
+        this.actors = actors;
     }
 
     public double getAmountRemaining() {

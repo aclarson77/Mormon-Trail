@@ -6,6 +6,9 @@
 package mormontrail.view;
 
 import java.util.Scanner;
+import mormontrail.MormonTrail;
+import mormontrail.model.Game;
+import mormontrail.model.InventoryItem;
 
 /**
  *
@@ -45,10 +48,10 @@ public class InGameMenu extends View {
                 this.advanceTrail();
                 break;
             case "M":
-                this.showMap();
+                this.displayMap();
                 break;
             case "I":
-                this.showInv();
+                this.viewInventory();
                 break;
             case "W":
                 this.wagonStatus();
@@ -87,11 +90,32 @@ public class InGameMenu extends View {
         System.out.println("*** advanceTrail function called ***");
     }
 
-    private void showMap() {
-        System.out.println("*** showMap function called ***");}
+    //Page 35 in Week10 Team Assignment
+    private void displayMap() {
+        System.out.println("*** showMap function called ***");
+    }
 
-    private void showInv() {
-        System.out.println("*** showInv function called ***");
+    private void viewInventory() {
+        StringBuilder line;
+        
+        Game game = MormonTrail.getCurrentGame();
+        InventoryItem[] inventory = game.getInventory();
+        
+        System.out.println("\n      LIST OF INVENTORY ITEMS");
+        line = new StringBuilder("                                     ");
+        line.insert(0, "DESCRIPTION");
+        line.insert(20, "REQUIRED");
+        line.insert(30, "IN STOCK");
+        System.out.println(line.toString());
+        
+        for (InventoryItem item : inventory) {
+            line = new StringBuilder("                                      ");
+            line.insert(0, item.getDescription());
+            line.insert(23, item.getRequiredQuantity()); // just getQuantity? I cannot remember. (InventoryItem)?
+            line.insert(33, item.getQuantity());
+            
+            System.out.println(line.toString());
+        }
     }
 
     private void wagonStatus() {

@@ -6,6 +6,7 @@
 package mormontrail.view;
 
 import java.util.Scanner;
+import mormontrail.MormonTrail;
 
 /**
  *
@@ -55,6 +56,8 @@ public class MainMenuView extends View {
 
     private void startNewGame() {
         //GameIntroView.createNewGame(MormonTrail.getPlayer());
+        
+        GameControl.createNewGame(MormonTrail.getPlayer());
         
         GameIntroView gameMenu = new GameIntroView();
         gameMenu.display();

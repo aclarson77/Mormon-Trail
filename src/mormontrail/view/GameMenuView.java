@@ -17,4 +17,8 @@ class GameMenuView {
 
     }
     
+    void startNewGame() {
+        
+    }
+    
 }

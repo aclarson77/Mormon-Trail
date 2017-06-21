@@ -22,6 +22,8 @@ public class InventoryItem implements Serializable {
     private int minQuantity;
     private double weight;
     private double weightPerUnit;
+    
+    private Game game;
 
     public InventoryItem() {
         
@@ -107,6 +109,14 @@ public class InventoryItem implements Serializable {
     public void setWeightPerUnit(double weightPerUnit) {
         this.weightPerUnit = weightPerUnit;
     }
+    
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
 
     @Override
     public int hashCode() {
@@ -160,6 +170,10 @@ public class InventoryItem implements Serializable {
             return false;
         }
         return true;
+    }
+
+    public void setDescription(String ammo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
               
 }

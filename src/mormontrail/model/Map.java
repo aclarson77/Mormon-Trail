@@ -19,8 +19,48 @@ public class Map implements Serializable {
     private int columnCount;
     private int currentRow;
     private int currentColumn;
+    
+    private Location[][] locations;
+    
+    private Game game;
 
     public Map() {
+    }
+    
+    public Map(int rowCount, int columnCount) {
+        
+        if(rowCount < 1 || columnCount < 1) {
+            System.out.println("The number of rows and colums must be > zero");
+            return;
+        }
+        
+        this.rowCount = rowCount;
+        this.columnCount = columnCount;
+        
+        this.locations = new Location[rowCount][columnCount];
+        
+        for (int row = 0; row < rowCount; row++) {
+            for(int column = 0; column < columnCount; column++) {
+                
+                Location location = new Location();
+                location.setColumn(column);
+                location.setRow(row);
+                location.setVisited(false);
+                
+                locations[row][column] = location;
+            }
+        }
+    }
+    
+    private static Map createMap() {
+        
+        Map map = new Map(2, 13);
+        
+        Scene[] scenes = createScenes();
+        
+        GameControl.assignScenesToLocations(map, scenes);
+        
+        return map;        
     }
 
     public String getDescription() {
@@ -61,6 +101,14 @@ public class Map implements Serializable {
 
     public void setCurrentColumn(int currentColumn) {
         this.currentColumn = currentColumn;
+    }
+    
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
     }
 
     @Override

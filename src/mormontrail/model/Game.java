@@ -17,6 +17,13 @@ public class Game implements Serializable {
     private int bestScore;
     private String namePlayer;
     private String saveLog;
+    private Player player;
+    private Wagon wagon;
+    //do we need this?
+    private Actor actor;
+    private Map map;
+    
+    private InventoryItem[] inventory;
 
     public Game() {
     }
@@ -44,6 +51,46 @@ public class Game implements Serializable {
 
     public void setSaveLog(String saveLog) {
         this.saveLog = saveLog;
+    }
+    
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+    
+    public Wagon getWagon() {
+        return wagon;
+    }
+
+    public void setWagon(Wagon wagon) {
+        this.wagon = wagon;
+    }
+
+    public Actor getActor() {
+        return actor;
+    }
+
+    public void setActor(Actor actor) {
+        this.actor = actor;
+    }
+
+    public Map getMap() {
+        return map;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
+    }
+    
+    public InventoryItem[] getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(InventoryItem[] inventory) {
+        this.inventory = inventory;
     }
 
     @Override
