@@ -19,10 +19,9 @@ public class Map implements Serializable {
     private int columnCount;
     private int currentRow;
     private int currentColumn;
-    
+    private Scene currentScene;
     private Location[][] locations;
-    
-    private Game game;
+    private Location currentLocation;
 
     public Map() {
     }
@@ -50,17 +49,6 @@ public class Map implements Serializable {
                 locations[row][column] = location;
             }
         }
-    }
-    
-    private static Map createMap() {
-        
-        Map map = new Map(2, 13);
-        
-        Scene[] scenes = createScenes();
-        
-        GameControl.assignScenesToLocations(map, scenes);
-        
-        return map;        
     }
 
     public String getDescription() {
@@ -102,13 +90,25 @@ public class Map implements Serializable {
     public void setCurrentColumn(int currentColumn) {
         this.currentColumn = currentColumn;
     }
-    
-    public Game getGame() {
-        return game;
+
+    public Scene getCurrentScene() {
+        return currentScene;
     }
 
-    public void setGame(Game game) {
-        this.game = game;
+    public void setCurrentScene(Scene currentScene) {
+        this.currentScene = currentScene;
+    }
+    
+    public Location[][] getLocations() {
+        return locations;
+    }
+
+    public Location getCurrentLocation() {
+        return currentLocation;
+    }
+
+    public void setCurrentLocation(Location currentLocation) {
+        this.currentLocation = currentLocation;
     }
 
     @Override

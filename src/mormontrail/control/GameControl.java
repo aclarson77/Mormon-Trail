@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mormontrail.view;
+package mormontrail.control;
 
 import mormontrail.MormonTrail;
 import mormontrail.model.Game;
@@ -11,12 +11,13 @@ import mormontrail.model.InventoryItem;
 import mormontrail.model.Map;
 import mormontrail.model.Player;
 import mormontrail.model.Wagon;
+import mormontrail.model.InventoryType;
 
 /**
  *
  * @author Andrew
  */
-class GameControl {
+public class GameControl {
 
     public static void createNewGame(Player player) {
     Game game = new Game();
@@ -33,7 +34,7 @@ class GameControl {
     Map map = MapControl.createMap();
     game.setMap(map);
     
-    MapControl.moveActorsToStartingLocation(map);
+    MapControl.movePlayerToStartingLocation(map);
     }
     
     public static InventoryItem[] createInventoryList() {
@@ -41,25 +42,25 @@ class GameControl {
         InventoryItem[] inventory = new InventoryItem[3];
         
         InventoryItem food = new InventoryItem();
-        food.setDescription("Food");
+        food.setInventoryType(InventoryType.food);
         food.setQuantity(1000);
         // what to assign for required amount?
         food.setRequiredQuantity(0);
-        inventory[Item.food.ordinal()] = food;
+        inventory[InventoryType.food.ordinal()] = food;
         
         InventoryItem ammo = new InventoryItem();
-        ammo.setDescription("Ammo");
+        ammo.setInventoryType(InventoryType.ammo);
         ammo.setQuantity(100);
         // what to assign for required amount?
         ammo.setRequiredQuantity(0);
-        inventory[Item.ammo.ordinal()] = ammo;
+        inventory[InventoryType.ammo.ordinal()] = ammo;
         
         InventoryItem clothes = new InventoryItem();
-        clothes.setDescription("Clothes");
+        clothes.setInventoryType(InventoryType.clothes);
         clothes.setQuantity(100);
         // what to assign for required amount?
         clothes.setRequiredQuantity(0);
-        inventory[Item.clothes.ordinal()] = clothes;
+        inventory[InventoryType.clothes.ordinal()] = clothes;
         
         return inventory;
         
@@ -70,21 +71,6 @@ class GameControl {
 //            clothes;
 //        }
     }
-    
-    public class MapControl {
-        public Map createMap() {
-            
-            Map map = null;
-            
-            System.out.println("\n*** createMap() called ***");
-            
-            return map;
-        }
-        // ???? do we need this?
-//        public static Map moveActorsToStartingLocation() {
-//            
-//        }
-}
         
     public static Player createPlayer(String name) {
         

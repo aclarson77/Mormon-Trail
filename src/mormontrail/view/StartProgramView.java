@@ -5,6 +5,7 @@
  */
 package mormontrail.view;
 
+import mormontrail.control.GameControl;
 import java.util.Scanner;
 import mormontrail.model.Player;
 

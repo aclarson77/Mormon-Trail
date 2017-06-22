@@ -113,8 +113,13 @@ public class RegisterNames extends View {
        
         String validation = getName("Are these names correct? (Y/N)");
         //If 'Yes', transition to Store view.
-        if (validation.toUpperCase().equals("Y"))
+        //We need to store the names in the Actors.
+        if (validation.toUpperCase().equals("Y")) {
+            
+            InGameMenu gameMenu = new InGameMenu();
+            gameMenu.display();
             return true;
+        }
         else
             return false;
         

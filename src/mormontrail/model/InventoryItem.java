@@ -15,7 +15,8 @@ import java.util.Objects;
 public class InventoryItem implements Serializable {
     
     // class instance variables
-    private String inventoryType;
+    private InventoryType inventoryType; // but what kind of food?
+    private String name;
     private int quantity; // # of units
     private int requiredQuantity; // remove required quantity?
     private int maxQuantity;
@@ -29,7 +30,7 @@ public class InventoryItem implements Serializable {
         
     }
     
-     public InventoryItem(String inventoryType, int quantity, double weightPerUnit) {
+     public InventoryItem(InventoryType inventoryType, int quantity, double weightPerUnit) {
         
         this.minQuantity = 0;
         this.inventoryType = inventoryType;
@@ -37,15 +38,15 @@ public class InventoryItem implements Serializable {
         this.weight = quantity * weightPerUnit;
         this.weightPerUnit = weightPerUnit;
         
-        if (inventoryType == "food")
+        if (inventoryType == InventoryType.food)
         {
             this.maxQuantity = 1000;
         }
-        else if (inventoryType == "clothes")
+        else if (inventoryType == InventoryType.clothes)
         {
             this.maxQuantity = 100;
         }
-        else if (inventoryType == "ammo")
+        else if (inventoryType == InventoryType.ammo)
         {
             this.maxQuantity = 100;
         }
@@ -53,13 +54,21 @@ public class InventoryItem implements Serializable {
             this.maxQuantity = 10;
         }
     }
-    
-    public String getInventoryType() {        
-        return this.inventoryType;
+
+    public InventoryType getInventoryType() {
+        return inventoryType;
     }
 
-    public void setInventoryType(String inventoryType) {
+    public void setInventoryType(InventoryType inventoryType) {
         this.inventoryType = inventoryType;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getQuantity() {        
@@ -170,10 +179,5 @@ public class InventoryItem implements Serializable {
             return false;
         }
         return true;
-    }
-
-    public void setDescription(String ammo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-              
+    }              
 }

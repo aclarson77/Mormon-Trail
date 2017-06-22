@@ -13,7 +13,7 @@ import mormontrail.model.Map;
 import mormontrail.model.Player;
 import mormontrail.model.Question;
 import mormontrail.model.RandomEvent;
-import mormontrail.model.RegularSceneType;
+import mormontrail.model.Scene;
 import mormontrail.view.StartProgramView;
 
 /**

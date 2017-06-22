@@ -44,7 +44,7 @@ public class GameIntroView extends View {
                 break;
             case "C":
                 this.registerNames();
-                break;
+                return true;
             case "Q":
                 return true;
             default:

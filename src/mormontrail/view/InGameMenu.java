@@ -7,8 +7,11 @@ package mormontrail.view;
 
 import java.util.Scanner;
 import mormontrail.MormonTrail;
+import mormontrail.control.MapControl;
 import mormontrail.model.Game;
 import mormontrail.model.InventoryItem;
+import mormontrail.model.Location;
+import mormontrail.model.Map;
 
 /**
  *
@@ -45,8 +48,7 @@ public class InGameMenu extends View {
         
         switch (value) {
             case "A":
-                this.advanceTrail();
-                break;
+                return this.advanceTrail();
             case "M":
                 this.displayMap();
                 break;
@@ -86,13 +88,27 @@ public class InGameMenu extends View {
         
         }
 
-    private void advanceTrail() {
-        System.out.println("*** advanceTrail function called ***");
-    }
-
-    //Page 35 in Week10 Team Assignment
-    private void displayMap() {
-        System.out.println("*** showMap function called ***");
+    private boolean advanceTrail() {
+        
+        Map map = MormonTrail.getCurrentGame().getMap();
+        if(map.getCurrentColumn() < 12) {
+            MapControl.movePlayer(map, map.getCurrentRow(), map.getCurrentColumn() + 1);
+            if(map.getCurrentRow() == 1 && map.getCurrentColumn() == 12) {
+                System.out.println("You're at the end of the game!");
+                // This is the place!
+                return true;
+            }
+        } else{
+            if(map.getCurrentRow() == 1) {
+                //You're at the end of the game!
+                System.out.println("You're at the end of the game!");
+                return true;
+            }
+            else
+               MapControl.movePlayer(map, 1, 0);
+        }
+        displayMap();
+        return false;
     }
 
     private void viewInventory() {
@@ -110,7 +126,7 @@ public class InGameMenu extends View {
         
         for (InventoryItem item : inventory) {
             line = new StringBuilder("                                      ");
-            line.insert(0, item.getDescription());
+            line.insert(0, item.getInventoryType().getDescription());
             line.insert(23, item.getRequiredQuantity()); // just getQuantity? I cannot remember. (InventoryItem)?
             line.insert(33, item.getQuantity());
             
@@ -118,6 +134,55 @@ public class InGameMenu extends View {
         }
     }
 
+    public void displayMap() {
+        String leftIndicator;
+        String rightIndicator;
+
+        Game game = MormonTrail.getCurrentGame(); // retreive the game
+        Map map = game.getMap(); // retreive the map from game
+        Location[][] locations = map.getLocations(); // retreive the locations from map
+        // Build the heading of the map
+        System.out.print("  |");
+        for (int column = 0; column < locations[0].length; column++) {
+            // print col numbers to side of map
+            if(column < 10){
+                System.out.print("  " + column + " |");
+            }
+            else
+                System.out.print(" " + column + " |");
+        }
+        // Now build the map.  For each row, show the column information
+        System.out.println();
+        for (int row = 0; row < locations.length; row++) {
+            System.out.print(row + " "); // print row numbers to side of map
+            for (int column = 0; column < locations[row].length; column++) {
+                // set default indicators as blanks
+                leftIndicator = " ";
+                rightIndicator = " ";
+                if (locations[row][column] == map.getCurrentLocation()) {
+                    // Set star indicators to show this is the current location.
+                    leftIndicator = "*";
+                    rightIndicator = "*";
+                } else if (locations[row][column].isVisited()) {
+                    // Set < > indicators to show this location has been visited.
+                    leftIndicator = ">"; // can be stars or whatever these are indicators showing visited
+                    rightIndicator = "<"; // same as above
+                }
+                System.out.print("|"); // start map with a |
+                if (locations[row][column].getScene() == null) {
+                    // No scene assigned here so use ?? for the symbol
+                    System.out.print(leftIndicator + "??" + rightIndicator);
+                } else {
+                    System.out.print(leftIndicator
+                            + locations[row][column].getScene().getMapSymbol()
+                            + rightIndicator);
+                }
+            }
+            System.out.println("|");
+        }
+        System.out.println("\nYou are currently at " + map.getCurrentScene().getDescription());
+    }
+    
     private void wagonStatus() {
         System.out.println("Your wagon is under contruction. It will be ready for"
                 + " travel along the trail once the game is up and running.");

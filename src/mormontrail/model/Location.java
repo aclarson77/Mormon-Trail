@@ -6,6 +6,7 @@
 package mormontrail.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,9 +20,6 @@ public class Location implements Serializable {
     
     //difference betwen Scene and RegularSceneType?
     private Scene scene;
-    private ArrayList<Actor> actors;
-    // do we need this?
-    private double amountRemaining;
 
     public Location() {
     }
@@ -42,7 +40,7 @@ public class Location implements Serializable {
         this.column = column;
     }
 
-    public int getVisited() {
+    public boolean isVisited() {
         return visited;
     }
 
@@ -57,63 +55,9 @@ public class Location implements Serializable {
     public void setScene(Scene scene) {
         this.scene = scene;
     }
-
-    public <any> getActors() {
-        return actors;
-    }
-
-    public void setActors(<any> actors) {
-        this.actors = actors;
-    }
-
-    public double getAmountRemaining() {
-        return amountRemaining;
-    }
-
-    public void setAmountRemaining(double amountRemaining) {
-        this.amountRemaining = amountRemaining;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 47 * hash + this.row;
-        hash = 47 * hash + this.column;
-        hash = 47 * hash + this.visited;
-        hash = 47 * hash + (int) (Double.doubleToLongBits(this.amountRemaining) ^ (Double.doubleToLongBits(this.amountRemaining) >>> 32));
-        return hash;
-    }
-
-    @Override
-    public String toString() {
-        return "Location{" + "row=" + row + ", column=" + column + ", visited=" + visited + ", amountRemaining=" + amountRemaining + '}';
-    }
     
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Location other = (Location) obj;
-        if (this.row != other.row) {
-            return false;
-        }
-        if (this.column != other.column) {
-            return false;
-        }
-        if (this.visited != other.visited) {
-            return false;
-        }
-        if (Double.doubleToLongBits(this.amountRemaining) != Double.doubleToLongBits(other.amountRemaining)) {
-            return false;
-        }
-        return true;
-    }
+    
+
+    
     
 }
