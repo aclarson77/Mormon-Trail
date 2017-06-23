@@ -24,6 +24,7 @@ public class Store extends View {
                   + "\nF - Food"
                   + "\nC - Clothes"
                   + "\nA - Ammo"
+                  + "\nG - Enter Game"
                   + "\nQ - Quit/Exit Store"
                   + "\n--------------------------------------");
     }
@@ -43,6 +44,11 @@ public class Store extends View {
             case "A":
                 this.buyAmmo();
                 break;  
+            case "G":
+                this.displayInGameMenu();
+                break;
+            case "Q":
+                return true;
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
                 break;
@@ -63,4 +69,13 @@ public class Store extends View {
     private void buyAmmo() {
         System.out.println("*** buyAmmo function called ***");
     }
+    
+    private void displayInGameMenu() {
+        
+        System.out.println("\n What do you need help with?");
+
+        InGameMenu inGameMenu = new InGameMenu();
+        inGameMenu.display();
+    }
+    
 }

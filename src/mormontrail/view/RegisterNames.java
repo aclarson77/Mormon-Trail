@@ -116,8 +116,8 @@ public class RegisterNames extends View {
         //We need to store the names in the Actors.
         if (validation.toUpperCase().equals("Y")) {
             
-            InGameMenu gameMenu = new InGameMenu();
-            gameMenu.display();
+            Store store = new Store();
+            store.display();
             return true;
         }
         else

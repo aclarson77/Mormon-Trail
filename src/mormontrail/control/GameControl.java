@@ -63,13 +63,6 @@ public class GameControl {
         inventory[InventoryType.clothes.ordinal()] = clothes;
         
         return inventory;
-        
-        //doesn't specify where we need to put this.
-//        public enum Item {
-//            food,
-//            ammo,
-//            clothes;
-//        }
     }
         
     public static Player createPlayer(String name) {
