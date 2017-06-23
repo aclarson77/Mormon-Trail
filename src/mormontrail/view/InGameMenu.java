@@ -229,6 +229,5 @@ public class InGameMenu extends View {
 
     private void backToMainMenu() {
         System.out.println("*** backToMainMenu function called ***");
-    }
-   
+    }   
 }

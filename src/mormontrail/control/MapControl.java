@@ -42,20 +42,20 @@ public static void movePlayer(Map map, int row, int column) {
    map.setCurrentColumn(column);
    map.setCurrentScene(map.getLocations()[row][column].getScene());
 }
-
+//https://en.wikipedia.org/wiki/Mormon_Trail
     private static Scene[] createScenes() {
 
         Scene[] scenes = new Scene[SceneType.values().length];
 
         Scene startingScene = new Scene();
-        startingScene.setDescription("starting scene description");
+        startingScene.setDescription("Nauvoo, Illinois - Welcome to Nauvoo!");
         startingScene.setMapSymbol("ST");
         scenes[SceneType.start.ordinal()] = startingScene;
 
         //store with inventory list within (pass to view if we need to use as part of view)
         Scene scene2Scene = new Scene();
-        scene2Scene.setDescription("store description");
-        scene2Scene.setMapSymbol("S2");
+        scene2Scene.setDescription("Nauvoo City Store - Welcome to the Nauvoo Store!");
+        scene2Scene.setMapSymbol("NS");
         ArrayList<InventoryItem> inventoryItems = new ArrayList<InventoryItem>();
         InventoryItem item = new InventoryItem();
         item.setInventoryType(InventoryType.food);
@@ -63,9 +63,9 @@ public static void movePlayer(Map map, int row, int column) {
         item.setName("Chicken");
         inventoryItems.add(item);
         
-//        set new properties for inventory item for (food,ammo,and clothes, like weight) - do
-//        several times (5-6 items, representing what's going to be in the store)
-        
+        //set new properties for inventory item for (food,ammo,and clothes, like weight) - do
+        //several times (5-6 items, representing what's going to be in the store)
+        //*** maybe we have a title of the resource (Food, Ammo, Clothes) with each subitem underneath, respectively?
         item = new InventoryItem();
         item.setInventoryType(InventoryType.food);
         item.setQuantity(20);
@@ -77,123 +77,124 @@ public static void movePlayer(Map map, int row, int column) {
         scenes[SceneType.scene2.ordinal()] = scene2Scene;
 
         Scene scene3Scene = new Scene();
-        scene3Scene.setDescription("scene3 description");
-        scene3Scene.setMapSymbol("S3");
+        scene3Scene.setDescription("Sugar Creek Camp, Iowa - [description]");
+        scene3Scene.setMapSymbol("SC");
         scenes[SceneType.scene3.ordinal()] = scene3Scene;
 
         Scene scene4Scene = new Scene();
-        scene4Scene.setDescription("scene4 description");
-        scene4Scene.setMapSymbol("S4");
+        scene4Scene.setDescription("Garden Grove, Iowa - [description]");
+        scene4Scene.setMapSymbol("GG");
         scenes[SceneType.scene4.ordinal()] = scene4Scene;
 
         Scene scene5Scene = new Scene();
-        scene5Scene.setDescription("scene5 description");
-        scene5Scene.setMapSymbol("S5");
+        scene5Scene.setDescription("Richardson's Point, Iowa - [description]");
+        scene5Scene.setMapSymbol("RP");
         scenes[SceneType.scene5.ordinal()] = scene5Scene;
 
         Scene scene6Scene = new Scene();
-        scene6Scene.setDescription("scene6 description");
-        scene6Scene.setMapSymbol("S6");
+        scene6Scene.setDescription("Chariton River Crossing, Iowa - [description]");
+        scene6Scene.setMapSymbol("CR");
         scenes[SceneType.scene6.ordinal()] = scene6Scene;
 
+        //duplicate - move others up and include one more Utah location/scene
         Scene scene7Scene = new Scene();
-        scene7Scene.setDescription("scene7 description");
+        scene7Scene.setDescription("Garden Grove, Iowa - [description]");
         scene7Scene.setMapSymbol("S7");
         scenes[SceneType.scene7.ordinal()] = scene7Scene;
 
         Scene scene8Scene = new Scene();
-        scene8Scene.setDescription("scene8 description");
-        scene8Scene.setMapSymbol("S8");
+        scene8Scene.setDescription("Mount Pisgah, Iowa - [description]");
+        scene8Scene.setMapSymbol("MP");
         scenes[SceneType.scene8.ordinal()] = scene8Scene;
 
         Scene scene9Scene = new Scene();
-        scene9Scene.setDescription("scene9 description");
-        scene9Scene.setMapSymbol("S9");
+        scene9Scene.setDescription("Nishnabotna River Crossing, Iowa - [description]");
+        scene9Scene.setMapSymbol("NR");
         scenes[SceneType.scene9.ordinal()] = scene9Scene;
 
         Scene scene10Scene = new Scene();
-        scene10Scene.setDescription("scene10 description");
-        scene10Scene.setMapSymbol("10");
+        scene10Scene.setDescription("Grand Encampment, Iowa - [description]");
+        scene10Scene.setMapSymbol("GE");
         scenes[SceneType.scene10.ordinal()] = scene10Scene;
 
         Scene scene11Scene = new Scene();
-        scene11Scene.setDescription("scene11 description");
-        scene11Scene.setMapSymbol("11");
+        scene11Scene.setDescription("Kanesville, Iowa - [description]");
+        scene11Scene.setMapSymbol("KV");
         scenes[SceneType.scene11.ordinal()] = scene11Scene;
 
         Scene scene12Scene = new Scene();
-        scene12Scene.setDescription("scene12 description");
-        scene12Scene.setMapSymbol("12");
+        scene12Scene.setDescription("Winter Quarters, Nebraska - [description]");
+        scene12Scene.setMapSymbol("WQ");
         scenes[SceneType.scene12.ordinal()] = scene12Scene;
 
         Scene scene13Scene = new Scene();
-        scene13Scene.setDescription("scene13 description");
-        scene13Scene.setMapSymbol("13");
+        scene13Scene.setDescription("Elkhorn/Platte River, Nebraska - [description]");
+        scene13Scene.setMapSymbol("PR");
         scenes[SceneType.scene13.ordinal()] = scene13Scene;
 
         Scene scene14Scene = new Scene();
-        scene14Scene.setDescription("scene14 description");
-        scene14Scene.setMapSymbol("14");
+        scene14Scene.setDescription("Fort Kearny, Nebraska - [description]");
+        scene14Scene.setMapSymbol("FK");
         scenes[SceneType.scene14.ordinal()] = scene14Scene;
 
         Scene scene15Scene = new Scene();
-        scene15Scene.setDescription("scene15 description");
-        scene15Scene.setMapSymbol("15");
+        scene15Scene.setDescription("Ash Hollow, Nebraska - [description]");
+        scene15Scene.setMapSymbol("AH");
         scenes[SceneType.scene15.ordinal()] = scene15Scene;
 
         Scene scene16Scene = new Scene();
-        scene16Scene.setDescription("scene16 description");
-        scene16Scene.setMapSymbol("16");
+        scene16Scene.setDescription("Chimney Rock, Nebraska - [description]");
+        scene16Scene.setMapSymbol("CR");
         scenes[SceneType.scene16.ordinal()] = scene16Scene;
 
         Scene scene17Scene = new Scene();
-        scene17Scene.setDescription("scene17 description");
-        scene17Scene.setMapSymbol("17");
+        scene17Scene.setDescription("Fort Laramie, Wyoming - [description]");
+        scene17Scene.setMapSymbol("FL");
         scenes[SceneType.scene17.ordinal()] = scene17Scene;
 
         Scene scene18Scene = new Scene();
-        scene18Scene.setDescription("scene18 description");
-        scene18Scene.setMapSymbol("18");
+        scene18Scene.setDescription("Red Butte, Wyoming - [description]");
+        scene18Scene.setMapSymbol("RB");
         scenes[SceneType.scene18.ordinal()] = scene18Scene;
 
         Scene scene19Scene = new Scene();
-        scene19Scene.setDescription("scene19 description");
-        scene19Scene.setMapSymbol("19");
+        scene19Scene.setDescription("Independence Rock, Wyoming - [description]");
+        scene19Scene.setMapSymbol("IR");
         scenes[SceneType.scene19.ordinal()] = scene19Scene;
 
         Scene scene20Scene = new Scene();
-        scene20Scene.setDescription("scene20 description");
-        scene20Scene.setMapSymbol("20");
+        scene20Scene.setDescription("Devil's Gate, Wyoming - [description]");
+        scene20Scene.setMapSymbol("DG");
         scenes[SceneType.scene20.ordinal()] = scene20Scene;
 
         Scene scene21Scene = new Scene();
-        scene21Scene.setDescription("scene21 description");
-        scene21Scene.setMapSymbol("21");
+        scene21Scene.setDescription("Martin's Cove, Wyoming - [description]");
+        scene21Scene.setMapSymbol("MC");
         scenes[SceneType.scene21.ordinal()] = scene21Scene;
 
         Scene scene22Scene = new Scene();
-        scene22Scene.setDescription("scene22 description");
-        scene22Scene.setMapSymbol("22");
+        scene22Scene.setDescription("Rock Creek/South Pass, Wyoming - [description]");
+        scene22Scene.setMapSymbol("SP");
         scenes[SceneType.scene22.ordinal()] = scene22Scene;
 
         Scene scene23Scene = new Scene();
-        scene23Scene.setDescription("scene23 description");
-        scene23Scene.setMapSymbol("23");
+        scene23Scene.setDescription("Ft. Bridger, Wyoming - [description]");
+        scene23Scene.setMapSymbol("FB");
         scenes[SceneType.scene23.ordinal()] = scene23Scene;
 
         Scene scene24Scene = new Scene();
-        scene24Scene.setDescription("scene24 description");
-        scene24Scene.setMapSymbol("24");
+        scene24Scene.setDescription("Bear River, Wyoming - [description]");
+        scene24Scene.setMapSymbol("BR");
         scenes[SceneType.scene24.ordinal()] = scene24Scene;
 
         Scene scene25Scene = new Scene();
-        scene25Scene.setDescription("scene25 description");
-        scene25Scene.setMapSymbol("25");
+        scene25Scene.setDescription("Emigration Canyon, Utah - [description]");
+        scene25Scene.setMapSymbol("EC");
         scenes[SceneType.scene25.ordinal()] = scene25Scene;
 
         Scene finishScene = new Scene();
-        finishScene.setDescription("final scene description");
-        finishScene.setMapSymbol("FN");
+        finishScene.setDescription("Salt Lake Valley, Utah - [description]");
+        finishScene.setMapSymbol("SV");
         scenes[SceneType.finish.ordinal()] = finishScene;
 
         return scenes;

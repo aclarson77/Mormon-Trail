@@ -160,8 +160,5 @@ public static void ajClassTest(){
 
     public static void setPlayer(Player player) {
         MormonTrail.player = player;
-    }
-    
-    
-    
+    } 
 }

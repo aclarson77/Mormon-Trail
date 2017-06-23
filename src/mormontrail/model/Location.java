@@ -54,10 +54,5 @@ public class Location implements Serializable {
 
     public void setScene(Scene scene) {
         this.scene = scene;
-    }
-    
-    
-
-    
-    
+    }  
 }

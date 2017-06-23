@@ -19,6 +19,5 @@ class GameMenuView {
     
     void startNewGame() {
         
-    }
-    
+    } 
 }
