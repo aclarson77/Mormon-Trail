@@ -78,122 +78,170 @@ public static void movePlayer(Map map, int row, int column) {
         scenes[SceneType.nauvooStore.ordinal()] = nauvooStoreScene;
 
         Scene sugarCreekScene = new Scene();
-        sugarCreekScene.setDescription("Sugar Creek Camp, Iowa - [description]");
+        sugarCreekScene.setDescription("Sugar Creek Camp, Iowa - "
+                + "Just on the other side of the Mississippi River from Nauvoo, "
+                + "Sugar Creek is the staging area for the great trek westward. "
+                    );
         sugarCreekScene.setMapSymbol("SC");
         scenes[SceneType.sugarCreek.ordinal()] = sugarCreekScene;
 
         Scene gardenGroveScene = new Scene();
-        gardenGroveScene.setDescription("Garden Grove, Iowa - [description]");
+        gardenGroveScene.setDescription("Garden Grove, Iowa - "
+                + "The first semi-permanent settlement, with 715 acres of food planted"
+                + "for passing pioneers.");
         gardenGroveScene.setMapSymbol("GG");
         scenes[SceneType.gardenGrove.ordinal()] = gardenGroveScene;
 
         Scene richardsonPointScene = new Scene();
-        richardsonPointScene.setDescription("Richardson's Point, Iowa - [description]");
+        richardsonPointScene.setDescription("Richardson's Point, Iowa - "
+                + "After fording the Des Moines River, you arrive in the wooded area"
+                + "known as Richardson's point.");
         richardsonPointScene.setMapSymbol("RP");
         scenes[SceneType.richardsonPoint.ordinal()] = richardsonPointScene;
 
         Scene charitonRiverScene = new Scene();
-        charitonRiverScene.setDescription("Chariton River Crossing, Iowa - [description]");
+        charitonRiverScene.setDescription("Chariton River Crossing, Iowa - "
+                + "Brigham Young organized the lead group of the original migration"
+                + "here at the Chariton River Crossing.");
         charitonRiverScene.setMapSymbol("CR");
         scenes[SceneType.charitonRiver.ordinal()] = charitonRiverScene;
 
         Scene mountPisgahScene = new Scene();
-        mountPisgahScene.setDescription("Mount Pisgah, Iowa - [description]");
+        mountPisgahScene.setDescription("Mount Pisgah, Iowa - "
+                + "You have entered the territory of the Potawatomi Indians. "
+                + "Another semi-permanent stettlement was established here to "
+                + "benefit future pioneers. ");
         mountPisgahScene.setMapSymbol("MP");
         scenes[SceneType.mountPisgah.ordinal()] = mountPisgahScene;
 
         Scene nishnabotnaRiverScene = new Scene();
-        nishnabotnaRiverScene.setDescription("Nishnabotna River Crossing, Iowa - [description]");
+        nishnabotnaRiverScene.setDescription("Nishnabotna River Crossing, Iowa - "
+                + "The Potawatomi Indians were also refugees, Nishnabotna River crossing"
+                + "has a Potawatomi encampment along the river.");
         nishnabotnaRiverScene.setMapSymbol("NR");
         scenes[SceneType.nishnabotnaRiver.ordinal()] = nishnabotnaRiverScene;
 
         Scene grandEncampmentScene = new Scene();
-        grandEncampmentScene.setDescription("Grand Encampment, Iowa - [description]");
+        grandEncampmentScene.setDescription("Grand Encampment, Iowa - "
+                + "Here is where the Grand Encampment was organized. From this site,"
+                + "the Mormoon Battalion departed for the Mexican-American War.");
         grandEncampmentScene.setMapSymbol("GE");
         scenes[SceneType.grandEncampment.ordinal()] = grandEncampmentScene;
 
         Scene kanesvilleScene = new Scene();
-        kanesvilleScene.setDescription("Kanesville, Iowa - [description]");
+        kanesvilleScene.setDescription("Kanesville, Iowa - "
+                + "The important settlement and outfitting point along the Missouri River."
+        );
         kanesvilleScene.setMapSymbol("KV");
         scenes[SceneType.kanesville.ordinal()] = kanesvilleScene;
 
         Scene winterQuartersScene = new Scene();
-        winterQuartersScene.setDescription("Winter Quarters, Nebraska - [description]");
+        winterQuartersScene.setDescription("Winter Quarters, Nebraska - "
+                + "Brigham Young settled here for the winter of 1846-47 before finishing the "
+                + "trek to Utah. Winter Quarters is an important place to trade for equipment "
+                + "and supplies. ");
         winterQuartersScene.setMapSymbol("WQ");
         scenes[SceneType.winterQuarters.ordinal()] = winterQuartersScene;
 
         Scene platteRiverScene = new Scene();
-        platteRiverScene.setDescription("Platte River, Nebraska - [description]");
+        platteRiverScene.setDescription("Platte River, Nebraska - "
+                + "Following the Platte River is a dangerous gamble, the "
+                + "amount of traffic on both sides of the river makes the "
+                + "area void of feed for the oxen.");
         platteRiverScene.setMapSymbol("PR");
         scenes[SceneType.platteRiver.ordinal()] = platteRiverScene;
 
         Scene fortKearnyScene = new Scene();
-        fortKearnyScene.setDescription("Fort Kearny, Nebraska - [description]");
+        fortKearnyScene.setDescription("Fort Kearny, Nebraska - "
+                + "Fort Kearny, purchased for $2,000 in goods from the"
+                + "Pawnee Indians, was named after Stephen Watts Kearny. ");
         fortKearnyScene.setMapSymbol("FK");
         scenes[SceneType.fortKearny.ordinal()] = fortKearnyScene;
 
         Scene ashHollowScene = new Scene();
-        ashHollowScene.setDescription("Ash Hollow, Nebraska - [description]");
+        ashHollowScene.setDescription("Ash Hollow, Nebraska - "
+                + "Once a beautiful place, the many passing emigrants "
+                + "left a mark in this area. The Sioux indians are not"
+                + "far away from here.");
         ashHollowScene.setMapSymbol("AH");
         scenes[SceneType.ashHollow.ordinal()] = ashHollowScene;
 
         Scene chimneyRockScene = new Scene();
-        chimneyRockScene.setDescription("Chimney Rock, Nebraska - [description]");
+        chimneyRockScene.setDescription("Chimney Rock, Nebraska - "
+                + "The most significant landmark on the trail. Many names"
+                + "are found carved on Chimney Rock.");
         chimneyRockScene.setMapSymbol("CR");
         scenes[SceneType.chimneyRock.ordinal()] = chimneyRockScene;
 
         Scene fortLaramieScene = new Scene();
-        fortLaramieScene.setDescription("Fort Laramie, Wyoming - [description]");
+        fortLaramieScene.setDescription("Fort Laramie, Wyoming - "
+                + "An old trading and military post, here is a great place to "
+                + "rest and restock provisions.");
         fortLaramieScene.setMapSymbol("FL");
         scenes[SceneType.fortLaramie.ordinal()] = fortLaramieScene;
 
         Scene redButteScene = new Scene();
-        redButteScene.setDescription("Red Butte, Wyoming - [description]");
+        redButteScene.setDescription("Red Butte, Wyoming - "
+                + "A tragic site for the Martin Willie Handcart Company. "
+                + "Many emigrants died from harsh winter conditions here.");
         redButteScene.setMapSymbol("RB");
         scenes[SceneType.redButte.ordinal()] = redButteScene;
 
         Scene independenceRockScene = new Scene();
-        independenceRockScene.setDescription("Independence Rock, Wyoming - [description]");
+        independenceRockScene.setDescription("Independence Rock, Wyoming - "
+                + "One of the most anticipated landmarks on the trail.");
         independenceRockScene.setMapSymbol("IR");
         scenes[SceneType.independenceRock.ordinal()] = independenceRockScene;
 
         Scene devilsGateScene = new Scene();
-        devilsGateScene.setDescription("Devil's Gate, Wyoming - [description]");
+        devilsGateScene.setDescription("Devil's Gate, Wyoming - "
+                + "A narrow gorge cut through the rocks by the Sweetwater River.");
         devilsGateScene.setMapSymbol("DG");
         scenes[SceneType.devilsGate.ordinal()] = devilsGateScene;
 
         Scene martinsCoveScene = new Scene();
-        martinsCoveScene.setDescription("Martin's Cove, Wyoming - [description]");
+        martinsCoveScene.setDescription("Martin's Cove, Wyoming - "
+                + "A camp of the Martin Handcart Company during a blizzard.");
         martinsCoveScene.setMapSymbol("MC");
         scenes[SceneType.martinsCove.ordinal()] = martinsCoveScene;
 
         Scene southPassScene = new Scene();
-        southPassScene.setDescription("South Pass, Wyoming - [description]");
+        southPassScene.setDescription("South Pass, Wyoming - "
+                + "At nearly 7,550 feet in elevation, South Pass is an important landmark.");
         southPassScene.setMapSymbol("SP");
         scenes[SceneType.southPass.ordinal()] = southPassScene;
 
         Scene fortBridgerScene = new Scene();
-        fortBridgerScene.setDescription("Ft. Bridger, Wyoming - [description]");
+        fortBridgerScene.setDescription("Ft. Bridger, Wyoming - "
+                + "Established by famous mountain man Jim Bridger. Here, the Mormon,"
+                + "Oregon, and California trail separates.");
         fortBridgerScene.setMapSymbol("FB");
         scenes[SceneType.fortBridger.ordinal()] = fortBridgerScene;
 
         Scene bearRiverScene = new Scene();
-        bearRiverScene.setDescription("Bear River, Wyoming - [description]");
+        bearRiverScene.setDescription("Bear River, Wyoming - "
+                + "One of the final river crossings on the trail.");
         bearRiverScene.setMapSymbol("BR");
         scenes[SceneType.bearRiver.ordinal()] = bearRiverScene;
 
         Scene echoCanyonScene = new Scene();
-        echoCanyonScene.setDescription("Echo Canyon, Utah - [description]");
+        echoCanyonScene.setDescription("Echo Canyon, Utah - "
+                + "One of the final canyon descents along the trail. It often echoes.");
         echoCanyonScene.setMapSymbol("EC");
         scenes[SceneType.echoCanyon.ordinal()] = echoCanyonScene;
 
         Scene emigrationCanyonScene = new Scene();
-        emigrationCanyonScene.setDescription("Emigration Canyon, Utah - [description]");
+        emigrationCanyonScene.setDescription("Emigration Canyon, Utah - "
+                + "A geographical obstacle between Big Mountain and the Salt Lake Valley.");
         emigrationCanyonScene.setMapSymbol("EM");
         scenes[SceneType.emigrationCanyon.ordinal()] = emigrationCanyonScene;
 
         Scene saltLakeValleyScene = new Scene();
-        saltLakeValleyScene.setDescription("Salt Lake Valley, Utah - [description]");
+        saltLakeValleyScene.setDescription("Salt Lake Valley, Utah - "
+                + "You made it to the end of the trail!"
+                + "Hooray!"
+                + "....Well, sorta. Brigham Young might send you as far as Canada or Mexico now. "
+                + "Are you up for another trek?");
         saltLakeValleyScene.setMapSymbol("SV");
         scenes[SceneType.saltLakeValley.ordinal()] = saltLakeValleyScene;
 
