@@ -11,6 +11,7 @@ import mormontrail.MormonTrail;
 import mormontrail.control.MapControl;
 import mormontrail.model.Game;
 import mormontrail.model.InventoryItem;
+import mormontrail.model.InventoryType;
 import mormontrail.model.Location;
 import mormontrail.model.Map;
 
@@ -91,6 +92,50 @@ public class InGameMenu extends View {
 
     private boolean advanceTrail() {
         
+        StringBuilder line;
+        
+        Game game = MormonTrail.getCurrentGame();
+        ArrayList<InventoryItem> inventory = game.getInventory();
+        
+        System.out.println("\n  "
+                    + "\n------------------------------------------------------------------" 
+                    + "\n Church leaders have given you some basic supplies to help you "
+                    + "\n get started along your journey. However, they will not be enough" 
+                    + "\n for you to complete your entire trek. The following have been "
+                    + "\n provided to you. "
+                    + "\n------------------------------------------------------------------");
+
+        System.out.println("\n  LIST OF CURRENT INVENTORY ITEMS");
+        System.out.println("");
+        
+        line = new StringBuilder("                                     ");
+        line.insert(5, "DESCRIPTION");
+        line.insert(20, "WEIGHT");
+        System.out.println(line.toString());
+        
+        int totalWeight = 0;
+        int wagonWeight = 100;
+        
+        for (InventoryItem item1 : inventory) {
+            line = new StringBuilder("                                      ");
+            line.insert(5, item1.getInventoryType().getDescription());
+            line.insert(20, item1.getWeight());
+            totalWeight += item1.getWeight();
+            
+            System.out.println(line.toString());
+        }
+        System.out.println("");     
+        System.out.println("Your total inventory weight is " + totalWeight + " pounds."
+                            + "\n ");
+                            
+        
+        totalWeight = totalWeight + wagonWeight;
+        
+        System.out.println("Your combined wagon and invetory weight is " + totalWeight + " pounds."
+                            + "\n You will now purchase your remaining supplies at the Nauvoo Store.  "
+                            + "\n------------------------------------------------------------------");
+        
+        
         Map map = MormonTrail.getCurrentGame().getMap();
         if(map.getCurrentColumn() < 12) {
             MapControl.movePlayer(map, map.getCurrentRow(), map.getCurrentColumn() + 1);
@@ -128,7 +173,7 @@ public class InGameMenu extends View {
         Game game = MormonTrail.getCurrentGame();
         ArrayList<InventoryItem> inventory = game.getInventory();
         
-        System.out.println("\n      LIST OF INVENTORY ITEMS");
+        System.out.println("\n      LIST OF CURRENT INVENTORY ITEMS");
         line = new StringBuilder("                                     ");
         line.insert(5, "DESCRIPTION");
         line.insert(20, "WEIGHT");
