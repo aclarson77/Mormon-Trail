@@ -5,6 +5,7 @@
  */
 package mormontrail.view;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import mormontrail.MormonTrail;
 import mormontrail.control.MapControl;
@@ -94,7 +95,7 @@ public class InGameMenu extends View {
         if(map.getCurrentColumn() < 12) {
             MapControl.movePlayer(map, map.getCurrentRow(), map.getCurrentColumn() + 1);
             if(map.getCurrentRow() == 1 && map.getCurrentColumn() == 12) {
-                System.out.println("You're at the end of the game!");
+                System.out.println("This is the place! You are at the end of the game.");
                 // This is the place!
                 return true;
             }
@@ -107,6 +108,16 @@ public class InGameMenu extends View {
             else
                MapControl.movePlayer(map, 1, 0);
         }
+        switch (map.getCurrentScene().getMapSymbol()){
+            //cases for other stores
+            case "NS":
+                Store store = new Store();
+                store.setStoreName(map.getCurrentScene().getDescription());
+                store.setStoreInventory(map.getCurrentScene().getInventoryItems());
+                store.getInventory();
+                store.display();
+                break;  
+        }
         displayMap();
         return false;
     }
@@ -115,23 +126,26 @@ public class InGameMenu extends View {
         StringBuilder line;
         
         Game game = MormonTrail.getCurrentGame();
-        InventoryItem[] inventory = game.getInventory();
+        ArrayList<InventoryItem> inventory = game.getInventory();
         
         System.out.println("\n      LIST OF INVENTORY ITEMS");
         line = new StringBuilder("                                     ");
-        line.insert(0, "DESCRIPTION");
-        line.insert(20, "REQUIRED");
-        line.insert(30, "IN STOCK");
+        line.insert(5, "DESCRIPTION");
+        line.insert(20, "WEIGHT");
         System.out.println(line.toString());
+        
+        int totalWeight = 0;
         
         for (InventoryItem item : inventory) {
             line = new StringBuilder("                                      ");
-            line.insert(0, item.getInventoryType().getDescription());
-            line.insert(23, item.getRequiredQuantity()); // just getQuantity? I cannot remember. (InventoryItem)?
-            line.insert(33, item.getQuantity());
+            line.insert(5, item.getInventoryType().getDescription());
+            line.insert(20, item.getWeight());
+            totalWeight += item.getWeight();
             
             System.out.println(line.toString());
         }
+        System.out.println("Your total inventory weight: " + totalWeight);
+        // and total weight on the wagon is:
     }
 
     public void displayMap() {

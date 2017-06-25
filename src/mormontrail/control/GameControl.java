@@ -5,6 +5,7 @@
  */
 package mormontrail.control;
 
+import java.util.ArrayList;
 import mormontrail.MormonTrail;
 import mormontrail.model.Game;
 import mormontrail.model.InventoryItem;
@@ -25,7 +26,7 @@ public class GameControl {
     
     game.setPlayer(player);
     
-    InventoryItem[] inventoryList = GameControl.createInventoryList();
+    ArrayList<InventoryItem> inventoryList = GameControl.createInventoryList();
     game.setInventory(inventoryList);
     
     Wagon wagon = new Wagon();
@@ -37,30 +38,31 @@ public class GameControl {
     MapControl.movePlayerToStartingLocation(map);
     }
     
-    public static InventoryItem[] createInventoryList() {
+    public static ArrayList<InventoryItem> createInventoryList() {
         
-        InventoryItem[] inventory = new InventoryItem[3];
+        ArrayList<InventoryItem> inventory = new ArrayList<InventoryItem>();
         
-        InventoryItem food = new InventoryItem();
-        food.setInventoryType(InventoryType.food);
-        food.setQuantity(1000);
-        // what to assign for required amount?
-        food.setRequiredQuantity(0);
-        inventory[InventoryType.food.ordinal()] = food;
-        
-        InventoryItem ammo = new InventoryItem();
-        ammo.setInventoryType(InventoryType.ammo);
-        ammo.setQuantity(100);
-        // what to assign for required amount?
-        ammo.setRequiredQuantity(0);
-        inventory[InventoryType.ammo.ordinal()] = ammo;
-        
-        InventoryItem clothes = new InventoryItem();
-        clothes.setInventoryType(InventoryType.clothes);
-        clothes.setQuantity(100);
-        // what to assign for required amount?
-        clothes.setRequiredQuantity(0);
-        inventory[InventoryType.clothes.ordinal()] = clothes;
+//        InventoryItem food = new InventoryItem();
+//        food.setInventoryType(InventoryType.food);
+//        food.setQuantity(0);
+//        food.setName("Pig");
+//        // what to assign for required amount?
+//        food.setRequiredQuantity(0);
+//        inventory[InventoryType.food.ordinal()] = food;
+//        
+//        InventoryItem ammo = new InventoryItem();
+//        ammo.setInventoryType(InventoryType.ammo);
+//        ammo.setQuantity(0);
+//        // what to assign for required amount?
+//        ammo.setRequiredQuantity(0);
+//        inventory[InventoryType.ammo.ordinal()] = ammo;
+//        
+//        InventoryItem clothes = new InventoryItem();
+//        clothes.setInventoryType(InventoryType.clothes);
+//        clothes.setQuantity(0);
+//        // what to assign for required amount?
+//        clothes.setRequiredQuantity(0);
+//        inventory[InventoryType.clothes.ordinal()] = clothes;
         
         return inventory;
     }

@@ -6,6 +6,7 @@
 package mormontrail.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 /**
  *
@@ -23,7 +24,7 @@ public class Game implements Serializable {
     private Actor actor;
     private Map map;
     
-    private InventoryItem[] inventory;
+    private ArrayList<InventoryItem> inventory;
 
     public Game() {
     }
@@ -85,11 +86,11 @@ public class Game implements Serializable {
         this.map = map;
     }
     
-    public InventoryItem[] getInventory() {
+    public ArrayList<InventoryItem> getInventory() {
         return inventory;
     }
 
-    public void setInventory(InventoryItem[] inventory) {
+    public void setInventory(ArrayList<InventoryItem> inventory) {
         this.inventory = inventory;
     }
 

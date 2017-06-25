@@ -54,12 +54,13 @@ public static void movePlayer(Map map, int row, int column) {
 
         //store with inventory list within (pass to view if we need to use as part of view)
         Scene nauvooStoreScene = new Scene();
-        nauvooStoreScene.setDescription("Nauvoo City Store - Welcome to the Nauvoo Store!");
+        nauvooStoreScene.setDescription("Nauvoo City Store");
         nauvooStoreScene.setMapSymbol("NS");
         ArrayList<InventoryItem> inventoryItems = new ArrayList<InventoryItem>();
         InventoryItem item = new InventoryItem();
         item.setInventoryType(InventoryType.food);
-        item.setQuantity(25);
+        item.setWeight(25);
+        item.setPricePerPound(.25);
         item.setName("Chicken");
         inventoryItems.add(item);
         
@@ -69,7 +70,8 @@ public static void movePlayer(Map map, int row, int column) {
         //*** maybe we have a title of the resource (Food, Ammo, Clothes) with each subitem underneath, respectively?
         item = new InventoryItem();
         item.setInventoryType(InventoryType.food);
-        item.setQuantity(20);
+        item.setWeight(20);
+        item.setPricePerPound(1.25);
         //set currentQuantity - 2, for example, and have less items and added to inventory.
         item.setName("Pig");
         inventoryItems.add(item);
