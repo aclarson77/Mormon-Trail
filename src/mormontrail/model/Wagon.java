@@ -21,4 +21,5 @@ public class Wagon implements Serializable {
         this.maxWeight = 2525;
     }
     
+    
 }
