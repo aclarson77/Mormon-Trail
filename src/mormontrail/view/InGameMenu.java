@@ -128,7 +128,7 @@ public class InGameMenu extends View {
         Game game = MormonTrail.getCurrentGame();
         ArrayList<InventoryItem> inventory = game.getInventory();
         
-        System.out.println("\n      LIST OF INVENTORY ITEMS");
+        System.out.println("\n******LIST OF INVENTORY ITEMS******");
         line = new StringBuilder("                                     ");
         line.insert(5, "DESCRIPTION");
         line.insert(20, "WEIGHT");
