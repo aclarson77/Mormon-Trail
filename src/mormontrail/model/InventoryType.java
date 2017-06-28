@@ -11,9 +11,11 @@ package mormontrail.model;
  */
 public enum InventoryType {
     
+    cornmeal("Cornmeal"),
+    bacon("Bacon"),
     food("Food"),
     ammo("Ammo"),
-    clothes("Clothes");
+    clothes("Set of Clothes");
     
     private String description;
     

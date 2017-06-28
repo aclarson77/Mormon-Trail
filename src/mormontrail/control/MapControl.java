@@ -59,8 +59,29 @@ public static void movePlayer(Map map, int row, int column) {
         ArrayList<InventoryItem> inventoryItems = new ArrayList<InventoryItem>();
         InventoryItem item = new InventoryItem();
         item.setInventoryType(InventoryType.food);
-        item.setWeight(25);
+        item.setWeight(10);
+        item.setPricePerPound(.20);
+        item.setName("Beans");
+        inventoryItems.add(item);
+        
+        item = new InventoryItem();
+        item.setInventoryType(InventoryType.food);
+        item.setWeight(15);
         item.setPricePerPound(.25);
+        item.setName("Cornmeal");
+        inventoryItems.add(item);
+        
+        item = new InventoryItem();
+        item.setInventoryType(InventoryType.food);
+        item.setWeight(20);
+        item.setPricePerPound(.30);
+        item.setName("Potatoes");
+        inventoryItems.add(item);
+        
+        item = new InventoryItem();
+        item.setInventoryType(InventoryType.food);
+        item.setWeight(25);
+        item.setPricePerPound(.35);
         item.setName("Chicken");
         inventoryItems.add(item);
         
@@ -70,10 +91,50 @@ public static void movePlayer(Map map, int row, int column) {
         //*** maybe we have a title of the resource (Food, Ammo, Clothes) with each subitem underneath, respectively?
         item = new InventoryItem();
         item.setInventoryType(InventoryType.food);
-        item.setWeight(20);
-        item.setPricePerPound(1.25);
+        item.setWeight(30);
+        item.setPricePerPound(.45);
         //set currentQuantity - 2, for example, and have less items and added to inventory.
         item.setName("Pig");
+        inventoryItems.add(item);
+        
+        item = new InventoryItem();
+        item.setInventoryType(InventoryType.ammo);
+        item.setWeight(35);
+        item.setPricePerPound(.25);
+        //set currentQuantity - 2, for example, and have less items and added to inventory.
+        item.setName("Pistol Rounds");
+        inventoryItems.add(item);
+        
+        item = new InventoryItem();
+        item.setInventoryType(InventoryType.ammo);
+        item.setWeight(45);
+        item.setPricePerPound(.35);
+        //set currentQuantity - 2, for example, and have less items and added to inventory.
+        item.setName("Rifle Rounds");
+        inventoryItems.add(item);
+        
+        item = new InventoryItem();
+        item.setInventoryType(InventoryType.clothes);
+        item.setWeight(25);
+        item.setPricePerPound(.75);
+        //set currentQuantity - 2, for example, and have less items and added to inventory.
+        item.setName("Shirts");
+        inventoryItems.add(item);
+        
+        item = new InventoryItem();
+        item.setInventoryType(InventoryType.clothes);
+        item.setWeight(30);
+        item.setPricePerPound(.85);
+        //set currentQuantity - 2, for example, and have less items and added to inventory.
+        item.setName("Pants");
+        inventoryItems.add(item);
+        
+        item = new InventoryItem();
+        item.setInventoryType(InventoryType.clothes);
+        item.setWeight(15);
+        item.setPricePerPound(1.15);
+        //set currentQuantity - 2, for example, and have less items and added to inventory.
+        item.setName("Coats");
         inventoryItems.add(item);
         
         nauvooStoreScene.setInventoryItems(inventoryItems);
