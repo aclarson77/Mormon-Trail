@@ -72,7 +72,32 @@ public class Store extends View {
     @Override
     public boolean doAction(String value) {
     
+        int selectedItem;
+        
         value = value.toUpperCase();
+        
+        try {
+        selectedItem = Integer.parseInt(value);
+        
+        }
+        catch(NumberFormatException ne){ //lookup
+            System.out.println("You must enter a number, please try again.");
+            return false;
+        }
+        if (selectedItem >= storeInventory.size()) {
+            System.out.println("Item not found");
+            return false;
+        }
+        
+        // add logic: price, weight,
+        
+        InventoryItem selectedInventoryItem = storeInventory.get(selectedItem);
+        
+        //
+        
+        //numeric exception handling
+        
+
         //todo: parse value to integer, process integer to purchase food.
 //        switch (value) {
 //            case "F":
