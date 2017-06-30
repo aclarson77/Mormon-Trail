@@ -5,6 +5,7 @@
  */
 package mormontrail.control;
 
+import mormontrail.exceptions.InventoryControlException;
 import mormontrail.model.InventoryItem;
 
 /**
@@ -16,29 +17,38 @@ import mormontrail.model.InventoryItem;
 public class InventoryControl {
     
     static public double addToInventory(InventoryItem currentItem,
-        InventoryItem newItem){
+        InventoryItem newItem) throws InventoryControlException{
                         
         if (newItem.getInventoryType() != currentItem.getInventoryType())
         {
-           return -1;
+           throw new InventoryControlException("Cannot add different items together.");
+
+            //return -1;
         }
 
         if (currentItem.getWeight() < currentItem.getMinWeight() || 
             currentItem.getWeight() > currentItem.getMaxWeight())
         {
-           return -2;
+           throw new InventoryControlException("Current weight cannot be below 0 or above the max weight.");
+                
+            //return -2;
         }
         
         if (newItem.getWeight() < newItem.getMinWeight() || 
             newItem.getWeight() > newItem.getMaxWeight())
         {
-           return -3;
+            throw new InventoryControlException("New weight cannot be below 0 or above the max weight.");
+
+            //return -3;
         }
         
         if (currentItem.getWeight() + 
             newItem.getWeight() > currentItem.getMaxWeight())
         {
-            return -4;
+            throw new InventoryControlException("Current weight plus new weight cannot exceed max weight.");
+             
+
+            //return -4;
         }
         
         double addItemsToInv = currentItem.getWeight() + newItem.getWeight();
@@ -54,29 +64,40 @@ public class InventoryControl {
         */
     
     //todo
-    static public double removeFromInventory(InventoryItem currentItem, InventoryItem removeItem){
+    static public double removeFromInventory (InventoryItem currentItem, InventoryItem removeItem) throws InventoryControlException{
     
         if (removeItem.getInventoryType() != currentItem.getInventoryType())
         {
-           return -1;
+           throw new InventoryControlException("Cannot remove different items from each other.");
+
+            
+            //return -1;
         }
 
         if (currentItem.getWeight() < currentItem.getMinWeight() || 
             currentItem.getWeight() > currentItem.getMaxWeight())
         {
-           return -2;
+           throw new InventoryControlException("Current weight cannot be below 0 or above the max weight.");
+              
+
+            //return -2;
         }
         
         if (removeItem.getWeight() < removeItem.getMinWeight() || 
             removeItem.getWeight() > removeItem.getMaxWeight())
         {
-           return -3;
+           throw new InventoryControlException("New weight cannot be below 0 or above the max weight.");
+              
+
+            //return -3;
         }
         
         if (currentItem.getWeight() + 
             removeItem.getWeight() < currentItem.getMinWeight())
         {
-            return -4;
+            throw new InventoryControlException("Current weight minus new weight cannot be below the min weight.");
+
+            //return -4;
         }
         
         double removeItemsFromInv = currentItem.getWeight() - removeItem.getWeight();
