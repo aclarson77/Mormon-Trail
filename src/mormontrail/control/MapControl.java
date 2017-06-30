@@ -30,23 +30,26 @@ public class MapControl {
         return map;       
     }
     
-public static void movePlayerToStartingLocation(Map map) {
+public static void movePlayerToStartingLocation(Map map) throws mormontrail.exceptions.MapControlException {
    // If starting location is not supposed to be 0,0 then use the correct values here.
    movePlayer(map, 0, 0); // or instead of 0,0 you can select a different starting location
 }
 
-public static void movePlayer(Map map, int row, int column) throws MapControlException {
+public static void movePlayer(Map map, int row, int column) throws mormontrail.exceptions.MapControlException {
    
     if (map == null){
+        throw new mormontrail.exceptions.MapControlException("Map is not intitialized.");
         //*****throw new mapcontrolexception ("map is not initialized")
     }
     
     if (row < 0 || row >= map.getRowCount()) {
+        throw new mormontrail.exceptions.MapControlException("Row is out of bounds.");
      //*****throw new mapcontrolexception("row is out of bounds")   
     
     }
     
     if (column < 0 || column >= map.getColumnCount()) {
+        throw new mormontrail.exceptions.MapControlException("Column is out of bounds.");
      //*****throw new mapcontrolexception("column is out of bounds")   
     
     }
