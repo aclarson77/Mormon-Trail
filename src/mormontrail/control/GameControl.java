@@ -51,10 +51,38 @@ public class GameControl {
     Map map = MapControl.createMap();
     game.setMap(map);
     
-    MapControl.movePlayerToStartingLocation(map);
+        try {
+        MapControl.movePlayerToStartingLocation(map);
+        }
+
+        catch (mormontrail.exceptions.MapControlException me){
+            System.out.println(me.getMessage());
+            //return false;
+        }
+    
     }
     
     public static ArrayList<InventoryItem> createInventoryList() {
+        
+        //ArrayList<InventoryItem> inventoryList = GameControl.createInventoryList();
+ //   game.setInventory(inventoryList);
+    
+    
+//        InventoryItem item = new InventoryItem();
+//        item.setInventoryType(InventoryType.cornmeal);
+//        item.setWeight(30);
+//        inventoryList.add(item);
+//        
+//        item = new InventoryItem();
+//        item.setInventoryType(InventoryType.bacon);
+//        item.setWeight(5);
+//        inventoryList.add(item); 
+//        
+//        item = new InventoryItem();
+//        item.setInventoryType(InventoryType.clothes);
+//        item.setWeight(10);
+//        inventoryList.add(item);
+        
         
         ArrayList<InventoryItem> inventory = new ArrayList<InventoryItem>();
         
