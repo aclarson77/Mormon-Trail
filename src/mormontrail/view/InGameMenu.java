@@ -138,7 +138,15 @@ public class InGameMenu extends View {
         
         Map map = MormonTrail.getCurrentGame().getMap();
         if(map.getCurrentColumn() < 12) {
+            try {
             MapControl.movePlayer(map, map.getCurrentRow(), map.getCurrentColumn() + 1);
+            }
+            
+            catch (MapControlException me) {
+                System.out.println(me.getMessage());
+                return false;
+                }
+            
             if(map.getCurrentRow() == 1 && map.getCurrentColumn() == 12) {
                 System.out.println("This is the place! You are at the end of the game.");
                 // This is the place!
@@ -151,6 +159,8 @@ public class InGameMenu extends View {
                 return true;
             }
             else
+                
+                //*****add try catch around all movePlayer
                MapControl.movePlayer(map, 1, 0);
         }
         switch (map.getCurrentScene().getMapSymbol()){
