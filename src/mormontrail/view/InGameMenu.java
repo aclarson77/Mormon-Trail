@@ -142,7 +142,7 @@ public class InGameMenu extends View {
             MapControl.movePlayer(map, map.getCurrentRow(), map.getCurrentColumn() + 1);
             }
             
-            catch (MapControlException me) {
+            catch (mormontrail.exceptions.MapControlException me) {
                 System.out.println(me.getMessage());
                 return false;
                 }
@@ -152,16 +152,25 @@ public class InGameMenu extends View {
                 // This is the place!
                 return true;
             }
-        } else{
+        } 
+        else {
             if(map.getCurrentRow() == 1) {
                 //You're at the end of the game!
                 System.out.println("You're at the end of the game!");
                 return true;
             }
-            else
-                
+            
+        else
                 //*****add try catch around all movePlayer
-               MapControl.movePlayer(map, 1, 0);
+            try {
+                MapControl.movePlayer(map, 1, 0); 
+            }
+            
+            catch (mormontrail.exceptions.MapControlException me) {
+                System.out.println(me.getMessage());
+                return false;
+            }
+            
         }
         switch (map.getCurrentScene().getMapSymbol()){
             //cases for other stores
