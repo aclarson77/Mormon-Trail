@@ -35,12 +35,30 @@ public static void movePlayerToStartingLocation(Map map) {
    movePlayer(map, 0, 0); // or instead of 0,0 you can select a different starting location
 }
 
-public static void movePlayer(Map map, int row, int column) {
+public static void movePlayer(Map map, int row, int column) throws MapControlException {
+   
+    if (map == null){
+        //*****throw new mapcontrolexception ("map is not initialized")
+    }
+    
+    if (row < 0 || row >= map.getRowCount()) {
+     //*****throw new mapcontrolexception("row is out of bounds")   
+    
+    }
+    
+    if (column < 0 || column >= map.getColumnCount()) {
+     //*****throw new mapcontrolexception("column is out of bounds")   
+    
+    }
+    
    map.setCurrentLocation(map.getLocations()[row][column]);
    map.getCurrentLocation().setVisited(true);
    map.setCurrentRow(row);
    map.setCurrentColumn(column);
    map.setCurrentScene(map.getLocations()[row][column].getScene());
+   
+   //*****throw exception if row or column less than 0 or greater than map.rowcount or map.columncount
+   
 }
 //https://en.wikipedia.org/wiki/Mormon_Trail
     private static Scene[] createScenes() {
