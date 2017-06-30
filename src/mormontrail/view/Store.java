@@ -77,11 +77,11 @@ public class Store extends View {
         value = value.toUpperCase();
         
         try {
-        selectedItem = Integer.parseInt(value);
-        
+            selectedItem = Integer.parseInt(value);
         }
-        catch(NumberFormatException ne){ //lookup
-            System.out.println("You must enter a number, please try again.");
+        
+        catch(NumberFormatException nf){ //lookup
+            System.out.println("You must enter a valid number, please try again.");
             return false;
         }
         if (selectedItem >= storeInventory.size()) {
