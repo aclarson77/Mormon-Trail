@@ -46,7 +46,7 @@ public class RegisterNames extends View {
         +"\n* need for yourself and those you're looking after.         *"
         +"\n*                                                           *"
         +"\n*************************************************************";
-        System.out.println(this.banner);
+        this.console.println(this.banner);
     }
     
     boolean getRegisterNames() {
@@ -78,22 +78,25 @@ public class RegisterNames extends View {
     
     private String getName(String prompt) {
         
-        Scanner keyboard = new Scanner(System.in);
         String value = "";
         boolean valid = false;
         
+        try {
         while (!valid) {
-            System.out.println("\n" + prompt);
+            this.console.println("\n" + prompt);
             
-            value = keyboard.nextLine();
+            value = keyboard.readLine();
             value = value.trim();
             
             if (value.length() < 1) {
-                System.out.println("\nInvalid value: value can not be blank");
+                ErrorView.display(this.getClass().getName(), "\nInvalid value: value cannot be blank");
                 continue;
             }
             
-            break; 
+            break;
+        }
+        } catch (Exception e) {
+            ErrorView.display(this.getClass().getName(), "Error reading input: " + e.getMessage());
         }
         return value;
     }
@@ -104,11 +107,11 @@ public class RegisterNames extends View {
         name1 = value;
         if (getRegisterNames())
             return true;
-        System.out.println("Wagon Leader: " + name1);
-        System.out.println("Wagon Member #2: " + name2);
-        System.out.println("Wagon Member #3: " + name3);
-        System.out.println("Wagon Member #4: " + name4);
-        System.out.println("Wagon Member #5: " + name5);
+        this.console.println("Wagon Leader: " + name1);
+        this.console.println("Wagon Member #2: " + name2);
+        this.console.println("Wagon Member #3: " + name3);
+        this.console.println("Wagon Member #4: " + name4);
+        this.console.println("Wagon Member #5: " + name5);
         
        
         String validation = getName("Are these names correct? (Y/N)");

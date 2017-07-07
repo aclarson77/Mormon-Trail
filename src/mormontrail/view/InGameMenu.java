@@ -82,7 +82,7 @@ public class InGameMenu extends View {
                 this.backToMainMenu();
                 break;   
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                this.console.println("\n*** Invalid selection *** Try again");
                 break;
         
     }
@@ -97,7 +97,7 @@ public class InGameMenu extends View {
         Game game = MormonTrail.getCurrentGame();
         ArrayList<InventoryItem> inventory = game.getInventory();
         
-        System.out.println("\n  "
+        this.console.println("\n  "
                     + "\n------------------------------------------------------------------" 
                     + "\n Church leaders have given you some basic supplies to help you "
                     + "\n get started along your journey. However, they will not be enough" 
@@ -105,13 +105,13 @@ public class InGameMenu extends View {
                     + "\n provided to you. "
                     + "\n------------------------------------------------------------------");
 
-        System.out.println("\n  LIST OF CURRENT INVENTORY ITEMS");
-        System.out.println("");
+        this.console.println("\n  LIST OF CURRENT INVENTORY ITEMS");
+        this.console.println("");
         
         line = new StringBuilder("                                     ");
         line.insert(5, "DESCRIPTION");
         line.insert(20, "WEIGHT");
-        System.out.println(line.toString());
+        this.console.println(line.toString());
         
         int totalWeight = 0;
         int wagonWeight = 100;
@@ -122,16 +122,16 @@ public class InGameMenu extends View {
             line.insert(20, item1.getWeight());
             totalWeight += item1.getWeight();
             
-            System.out.println(line.toString());
+            this.console.println(line.toString());
         }
-        System.out.println("");     
-        System.out.println("Your total inventory weight is " + totalWeight + " pounds."
+        this.console.println("");     
+        this.console.println("Your total inventory weight is " + totalWeight + " pounds."
                             + "\n ");
                             
         
         totalWeight = totalWeight + wagonWeight;
         
-        System.out.println("Your combined wagon and invetory weight is " + totalWeight + " pounds."
+        this.console.println("Your combined wagon and invetory weight is " + totalWeight + " pounds."
                             + "\n You will now purchase your remaining supplies at the Nauvoo Store.  "
                             + "\n------------------------------------------------------------------");
         
@@ -148,7 +148,7 @@ public class InGameMenu extends View {
                 }
             
             if(map.getCurrentRow() == 1 && map.getCurrentColumn() == 12) {
-                System.out.println("This is the place! You are at the end of the game.");
+                this.console.println("This is the place! You are at the end of the game.");
                 // This is the place!
                 return true;
             }
@@ -156,7 +156,7 @@ public class InGameMenu extends View {
         else {
             if(map.getCurrentRow() == 1) {
                 //You're at the end of the game!
-                System.out.println("You're at the end of the game!");
+                this.console.println("You're at the end of the game!");
                 return true;
             }
             
@@ -178,7 +178,7 @@ public class InGameMenu extends View {
                 Store store = new Store();
                 store.setStoreName(map.getCurrentScene().getDescription());
                 store.setStoreInventory(map.getCurrentScene().getInventoryItems());
-                store.getInventory();
+                store.getInventory(false);
                 store.display();
                 break;  
         }
@@ -192,11 +192,11 @@ public class InGameMenu extends View {
         Game game = MormonTrail.getCurrentGame();
         ArrayList<InventoryItem> inventory = game.getInventory();
         
-        System.out.println("\n******LIST OF INVENTORY ITEMS******");
+        this.console.println("\n******LIST OF INVENTORY ITEMS******");
         line = new StringBuilder("                                     ");
         line.insert(5, "DESCRIPTION");
         line.insert(20, "WEIGHT");
-        System.out.println(line.toString());
+        this.console.println(line.toString());
         
         int totalWeight = 0;
         
@@ -206,9 +206,9 @@ public class InGameMenu extends View {
             line.insert(20, item.getWeight());
             totalWeight += item.getWeight();
             
-            System.out.println(line.toString());
+            this.console.println(line.toString());
         }
-        System.out.println("Your total inventory weight: " + totalWeight);
+        this.console.println("Your total inventory weight: " + totalWeight);
         // and total weight on the wagon is:
     }
 
@@ -220,19 +220,19 @@ public class InGameMenu extends View {
         Map map = game.getMap(); // retreive the map from game
         Location[][] locations = map.getLocations(); // retreive the locations from map
         // Build the heading of the map
-        System.out.print("  |");
+        this.console.print("  |");
         for (int column = 0; column < locations[0].length; column++) {
             // print col numbers to side of map
             if(column < 10){
-                System.out.print("  " + column + " |");
+                this.console.print("  " + column + " |");
             }
             else
-                System.out.print(" " + column + " |");
+                this.console.print(" " + column + " |");
         }
         // Now build the map.  For each row, show the column information
-        System.out.println();
+        this.console.println();
         for (int row = 0; row < locations.length; row++) {
-            System.out.print(row + " "); // print row numbers to side of map
+            this.console.print(row + " "); // print row numbers to side of map
             for (int column = 0; column < locations[row].length; column++) {
                 // set default indicators as blanks
                 leftIndicator = " ";
@@ -246,38 +246,38 @@ public class InGameMenu extends View {
                     leftIndicator = ">"; // can be stars or whatever these are indicators showing visited
                     rightIndicator = "<"; // same as above
                 }
-                System.out.print("|"); // start map with a |
+                this.console.print("|"); // start map with a |
                 if (locations[row][column].getScene() == null) {
                     // No scene assigned here so use ?? for the symbol
-                    System.out.print(leftIndicator + "??" + rightIndicator);
+                    this.console.print(leftIndicator + "??" + rightIndicator);
                 } else {
-                    System.out.print(leftIndicator
+                    this.console.print(leftIndicator
                             + locations[row][column].getScene().getMapSymbol()
                             + rightIndicator);
                 }
             }
-            System.out.println("|");
+            this.console.println("|");
         }
-        System.out.println("\nYou are currently at " + map.getCurrentScene().getDescription());
+        this.console.println("\nYou are currently at " + map.getCurrentScene().getDescription());
     }
     
     private void wagonStatus() {
-        System.out.println("Your wagon is under contruction. It will be ready for"
+        this.console.println("Your wagon is under contruction. It will be ready for"
                 + " travel along the trail once the game is up and running.");
     }
 
     private void talkToPeople() {
-        System.out.println("You meet a sleep deprived programmer. He doesn't say"
+        this.console.println("You meet a sleep deprived programmer. He doesn't say"
                 + " much. You back away slowly to avoid the awkward silence.");
     }
 
     private void scavengeSupplies() {
-        System.out.println("*** scavengeSupplies function called ***");
+        this.console.println("*** scavengeSupplies function called ***");
     }
     
     private void purchaseSupplies() {
         
-        System.out.println("\n You enter the store.");
+        this.console.println("\n You enter the store.");
 
         Store store = new Store();
 
@@ -286,7 +286,7 @@ public class InGameMenu extends View {
     }
     
     private void buySupplies() {
-        System.out.println("\n You enter the fort."
+        this.console.println("\n You enter the fort."
                           );
 
         Fort fort = new Fort();
@@ -306,6 +306,6 @@ public class InGameMenu extends View {
     }
 
     private void backToMainMenu() {
-        System.out.println("*** backToMainMenu function called ***");
+        this.console.println("*** backToMainMenu function called ***");
     }   
 }

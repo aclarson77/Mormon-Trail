@@ -43,14 +43,14 @@ public class LeaveItems extends View {
                 this.leaveAmmo();
                 break;
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                this.console.println("\n*** Invalid selection *** Try again");
                 break; 
     }
         return false;
         }
 
     private void leaveFood() {
-        
+        //remove statement? (What about keyboard.nextInt(); ???
         Scanner keyboard = new Scanner(System.in);
         boolean valid = false;
 
@@ -62,35 +62,36 @@ public class LeaveItems extends View {
            
             currentFood = 333 - newTotal;
                     
-            System.out.print("\nYou currently have " + currentFood + " pounds of food." 
+            this.console.print("\nYou currently have " + currentFood + " pounds of food." 
                                 + "\nHow much would you like to remove?" 
                             + "\n");
             
-            removeFood=keyboard.nextInt();            
+            //this.keyboard.readLine??? implement try-catch once clarified? (also see note on Line 53)
+            removeFood = keyboard.nextInt();            
 
             if (removeFood < 1) {
-                System.out.println("\nInvalid value: cannot be less than 1");
+                this.console.println("\nInvalid value: cannot be less than 1");
                 continue;
             }
             if (removeFood > currentFood) {
-                System.out.println("\nInvalid value: cannot remove more food than in inventory");
+                this.console.println("\nInvalid value: cannot remove more food than in inventory");
                 continue;
             }
 
             newTotal = (currentFood-removeFood);
 
-            System.out.println("\nYou now have " + newTotal + " pounds of food"
+            this.console.println("\nYou now have " + newTotal + " pounds of food"
             );
             break;   
         }
     }
 
     private void leaveClothes() {
-        System.out.println("*** leaveClothes function called ***");
+        this.console.println("*** leaveClothes function called ***");
     }
 
     private void leaveAmmo() {
-        System.out.println("*** leaveAmmo function called ***");
+        this.console.println("*** leaveAmmo function called ***");
     }
 
    

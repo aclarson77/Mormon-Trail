@@ -17,16 +17,17 @@ import mormontrail.model.InventoryItem;
  */
 //Store should be right after RegisterNames
 public class Store extends View {
-    
+
     private ArrayList<InventoryItem> storeInventory;
     private String storeName;
-    
-    public Store(){
+
+    public Store() {
         super("This store has no inventory! (Press Q to Quit)");
     }
-    public void getInventory() {
-        
-        if(storeInventory == null) {
+
+    public void getInventory(boolean toFile) {
+
+        if (storeInventory == null) {
             return;
         }
 //        super("\n"
@@ -38,7 +39,7 @@ public class Store extends View {
 
         String sInventory = "";
         int counter = 0;
-        
+
         StringBuilder line;
         int totalWeight = 0;
 //        Game game = MormonTrail.getCurrentGame();
@@ -52,7 +53,7 @@ public class Store extends View {
         line.insert(40, "IN STOCK (POUNDS)");
 
         sInventory += ("\n" + line.toString());
-        
+
         for (InventoryItem item : storeInventory) {
             line = new StringBuilder("                                      ");
             line.insert(0, counter);
@@ -64,41 +65,43 @@ public class Store extends View {
             counter++;
         }
         sInventory += ("\nThe total weight of your inventory is " + totalWeight + " lbs.");
-        sInventory += ("\nPlease enter the item you wish to purchase (Q to Leave the Store): ");
+        if (!toFile)
+            sInventory += ("\nPlease enter the item you wish to purchase (Q to Leave the Store OR S to Save to File): ");
         displayMessage = sInventory;
         return;
     }
-    
+
     @Override
     public boolean doAction(String value) {
-    
-        int selectedItem;
-        
-        value = value.toUpperCase();
-        
-        try {
-            selectedItem = Integer.parseInt(value);
-        }
-        
-        catch(NumberFormatException nf){ //lookup
-            System.out.println("You must enter a valid number, please try again.");
-            return false;
-        }
-        if (selectedItem >= storeInventory.size()) {
-            System.out.println("Item not found");
-            return false;
-        }
-        
-        // add logic: price, weight,
-        
-        InventoryItem selectedInventoryItem = storeInventory.get(selectedItem);
-        
-        //
-        
-        //numeric exception handling
-        
 
-        //todo: parse value to integer, process integer to purchase food.
+        int selectedItem;
+
+        value = value.toUpperCase();
+        if (value == "S") {
+           getInventory(true);
+           //printing on line 83 - prompt for file name (example.txt), if prompt length > 0 , save displayMessage to a file -- no for-each needed (taken care of) AS WELL AS "S".
+           
+           getInventory(false);
+        } else {
+
+            try {
+                selectedItem = Integer.parseInt(value);
+            } catch (NumberFormatException nf) { //lookup
+                ErrorView.display(this.getClass().getName(), 
+                "You must enter a valid number, please try again.");
+                return false;
+            }
+            if (selectedItem >= storeInventory.size()) {
+                this.console.println("Item not found");
+                return false;
+            }
+
+            // add logic: price, weight,
+            InventoryItem selectedInventoryItem = storeInventory.get(selectedItem);
+
+            //
+            //numeric exception handling
+            //todo: parse value to integer, process integer to purchase food.
 //        switch (value) {
 //            case "F":
 //                this.buyFood();
@@ -117,11 +120,13 @@ public class Store extends View {
 //                break;
 //        
 //    }
-        System.out.println("Process of purchase is not available yet");
-        getInventory();
-        return false;
-        
+            this.console.println("Process of purchase is not available yet");
+            //true or false??? Error - requires boolean value
+            getInventory(true);
+            return false;
         }
+        return false;
+    }
 
     public ArrayList<InventoryItem> getStoreInventory() {
         return storeInventory;
@@ -140,23 +145,23 @@ public class Store extends View {
     }
 
     private void buyFood() {
-        System.out.println("*** buyFood function called ***");
+        this.console.println("*** buyFood function called ***");
     }
 
     private void buyClothes() {
-        System.out.println("*** buyClothes function called ***");
+        this.console.println("*** buyClothes function called ***");
     }
 
     private void buyAmmo() {
-        System.out.println("*** buyAmmo function called ***");
+        this.console.println("*** buyAmmo function called ***");
     }
-    
+
     private void displayInGameMenu() {
-        
-        System.out.println("\n What do you need help with?");
+
+        this.console.println("\n What do you need help with?");
 
         InGameMenu inGameMenu = new InGameMenu();
         inGameMenu.display();
     }
-    
+
 }

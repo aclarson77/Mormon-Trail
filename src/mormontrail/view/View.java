@@ -5,7 +5,10 @@
  */
 package mormontrail.view;
 
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import mormontrail.MormonTrail;
 
 /**
  *
@@ -14,6 +17,9 @@ import java.util.Scanner;
 public abstract class View implements ViewInterface {
     
     protected String displayMessage;
+    
+    protected BufferedReader keyboard = MormonTrail.getInFile();
+    protected PrintWriter console = MormonTrail.getOutFile();;
     
     public View() {
     }
@@ -36,23 +42,30 @@ public abstract class View implements ViewInterface {
 
     @Override
     public String getInput() {
-        Scanner keyboard = new Scanner(System.in);
+        
         boolean valid = false;
         String value = null;
         
-        while (!valid) {
-            System.out.println("\n" + this.displayMessage);
-            
-            value = keyboard.nextLine();
-            value = value.trim();
-            
-            if (value.length() < 1) {
-                System.out.println("\nInvalid value: value can not be blank");
-                continue;
+        try {
+            // while a valid name has not been retrieved
+            while (!valid) {
+                this.console.println("\n" + this.displayMessage);
+
+                // get the value entered from the keyboard
+                value = this.keyboard.readLine();
+                value = value.trim();
+
+                if (value.length() < 1) {
+                    ErrorView.display(this.getClass().getName(),
+                            "\nInvalid value: value can not be blank");
+                    continue;
+                }
+                break;
             }
-            
-            break;
-            
+      
+        } catch (Exception e) {
+            ErrorView.display(this.getClass().getName(),
+                    "Reading input: " + e.getMessage());
         }
         
         return value;

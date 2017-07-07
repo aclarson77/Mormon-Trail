@@ -7,6 +7,7 @@ package mormontrail.model;
 
 import java.io.Serializable;
 import java.util.Objects;
+import mormontrail.view.ErrorView;
 
 /**
  *
@@ -29,7 +30,7 @@ public class Map implements Serializable {
     public Map(int rowCount, int columnCount) {
         
         if(rowCount < 1 || columnCount < 1) {
-            System.out.println("The number of rows and colums must be > zero");
+            ErrorView.display(this.getClass().getName(), "The number of rows and colums must be > zero");
             return;
         }
         

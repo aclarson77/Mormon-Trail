@@ -22,7 +22,7 @@ public class GameIntroView extends View {
                   + "\nQ - Quit to Previous Menu"
                   + "\n--------------------------------------");
     
-        System.out.println(
+        this.console.println(
         "\n*************************************************************"
         +"\n*                                                           *"       
         +"\n* Introduce the end user to the Pioneer Trek and the        *"
@@ -48,7 +48,7 @@ public class GameIntroView extends View {
             case "Q":
                 return true;
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                this.console.println("\n*** Invalid selection *** Try again");
                 break;
     }
         return false;
@@ -56,7 +56,7 @@ public class GameIntroView extends View {
     
     private void displayHelpMenu() {
         
-        System.out.println("\n What do you need help with?");
+        this.console.println("\n What do you need help with?");
 
         HelpMenuView helpMenuView = new HelpMenuView();
         helpMenuView.display();
@@ -64,7 +64,7 @@ public class GameIntroView extends View {
 
     private void registerNames() {
         
-        System.out.println("\n What do you need help with?");
+        this.console.println("\n What do you need help with?");
 
         RegisterNames registerName = new RegisterNames();
         registerName.display();

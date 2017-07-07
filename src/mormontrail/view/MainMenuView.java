@@ -47,7 +47,7 @@ public class MainMenuView extends View {
                 this.saveGame();
                 break;
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                this.console.println("\n*** Invalid selection *** Try again");
                 break;
         
     }
@@ -56,7 +56,6 @@ public class MainMenuView extends View {
     }
 
     private void startNewGame() {
-        //GameIntroView.createNewGame(MormonTrail.getPlayer());
         
         GameControl.createNewGame(MormonTrail.getPlayer());
         
@@ -65,25 +64,21 @@ public class MainMenuView extends View {
     }
 
     private void startExistingGame() {
+        
         InGameMenu ingameMenu = new InGameMenu();
         ingameMenu.display();
-        
-        //System.out.println("*** startExistingGame function called ***");
     }
 
     private void displayHelpMenu() {
         
-       
-        System.out.println("\n What do you need help with?");
+        this.console.println("\n What do you need help with?");
 
         HelpMenuView helpMenuView = new HelpMenuView();
         helpMenuView.display();
-        
-      // System.out.println("*** displayHelpMenu function called ***");
     }
 
     private void saveGame() {
-        System.out.println("*** startSaveGame function called ***");
+        this.console.println("*** startSaveGame function called ***");
     }
     
 }

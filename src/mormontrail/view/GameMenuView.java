@@ -10,9 +10,12 @@ package mormontrail.view;
  *
  * @author Andrew
  */
+
+// Can we delete this class, A.J.?
 class GameMenuView {
 
     void displayMenu() {
+        // Asking A.J. if we can delete this class - I do not think we use this class any longer.
         System.out.println("\n*** displayMenu stub function called ***");
 
     }

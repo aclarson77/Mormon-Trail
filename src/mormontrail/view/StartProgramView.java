@@ -13,8 +13,10 @@ import mormontrail.model.Player;
  *
  * @author Andrew
  */
-public class StartProgramView {
+public class StartProgramView extends View {
 
+    
+    
     public void displayStartProgramView() {
         
         boolean done = false;
@@ -42,17 +44,18 @@ public class StartProgramView {
         
     }
     
-    private String promptMessage;
+    //private String promptMessage;
     
     public StartProgramView() {
-        this.promptMessage = "\nPlease enter your name: ";
+        super("Please enter your name: ");
+        //this.promptMessage = "\nPlease enter your name: ";
         //display the banner when view is created
         this.displayBanner();
         
     }
 
     private void displayBanner() {
-        System.out.println(
+        this.console.println(
         "\n**************************************************************"
         +"\n*                                                           *"       
         +"\n* This is the game of the Mormon Oregon Trial. In this game *"
@@ -72,23 +75,26 @@ public class StartProgramView {
 
     private String getPlayersName() {
         
-        Scanner keyboard = new Scanner(System.in);
         String value = "";
         boolean valid = false;
         
+        try {
         while (!valid) {
-            System.out.println("\n" + this.promptMessage);
+            this.console.println("\n" + displayMessage);
             
-            value = keyboard.nextLine();
+            value = this.keyboard.readLine();
             value = value.trim();
             
             if (value.length() < 1) {
-                System.out.println("\nInvalid value: value can not be blank");
+                ErrorView.display(this.getClass().getName(), "\nInvalid value: value cannot be blank");
                 continue;
             }
             
             break;
-            
+        }
+        
+        } catch (Exception e) {
+            ErrorView.display(this.getClass().getName(), "Error reading input: " + e.getMessage());
         }
         
         return value;
@@ -112,9 +118,10 @@ public class StartProgramView {
         */
     }
 
-    private boolean doAction(String playersName) {
+    @Override
+    public boolean doAction(String playersName) {
         if (playersName.length() < 2) {
-            System.out.println("\nInvalid players name: "
+            this.console.println("\nInvalid players name: "
                     + "The name must be greater than one character in length");
             return false;
         }
@@ -122,7 +129,7 @@ public class StartProgramView {
         Player player = GameControl.createPlayer(playersName);
         
         if (player == null) {
-            System.out.println("\nError creating the player.");
+            this.console.println("\nError creating the player.");
             return false;
         }
     
@@ -132,7 +139,7 @@ public class StartProgramView {
     }
 
     private void displayNextView(Player player) {
-        System.out.println("\n================================="
+        this.console.println("\n================================="
                           + "\n Welcome to the game " + player.getName()
                           + "\n We hope you have a LOT of fun!"
                           + "\n================================="

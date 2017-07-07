@@ -42,17 +42,17 @@ public class GamesLog extends View {
                 return true;
 
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                this.console.println("\n*** Invalid selection *** Try again");
                 break;
         }
         return false;   
     }
 
     private void topScore() {
-        System.out.println("*** topScore function called ***");
+        this.console.println("*** topScore function called ***");
     }
     
     private void recentGame() {
-        System.out.println("*** recentGame function called ***");
+        this.console.println("*** recentGame function called ***");
     }
 }

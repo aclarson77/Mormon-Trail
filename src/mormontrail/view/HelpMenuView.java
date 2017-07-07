@@ -39,7 +39,7 @@ public class HelpMenuView extends View {
                 this.goal();
                 break;
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                this.console.println("\n*** Invalid selection *** Try again");
                 break;
         
     }
@@ -49,11 +49,11 @@ public class HelpMenuView extends View {
 
     //do text
     private void about() {
-        System.out.println("Name of Game, Authors, History of Pioneer Trek");
+        this.console.println("Name of Game, Authors, History of Pioneer Trek");
     }
 
     //do text
     private void goal() {
-        System.out.println("*** goal function called ***");
+        this.console.println("*** goal function called ***");
     }
 }

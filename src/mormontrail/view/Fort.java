@@ -37,7 +37,7 @@ public class Fort extends View{
                 this.buyClothes();
                 break; 
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                this.console.println("\n*** Invalid selection *** Try again");
                 break;
         
     }
@@ -46,10 +46,10 @@ public class Fort extends View{
         }
 
     private void buyFood() {
-        System.out.println("*** buyFood function called ***");
+        this.console.println("*** buyFood function called ***");
     }
 
     private void buyClothes() {
-        System.out.println("*** buyClothes function called ***");
+        this.console.println("*** buyClothes function called ***");
     }
 }

@@ -56,6 +56,7 @@ public class GameControl {
         }
 
         catch (mormontrail.exceptions.MapControlException me){
+            //keep the same as suggested by Brother Jones on MormonTrail.java?
             System.out.println(me.getMessage());
             //return false;
         }
