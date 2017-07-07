@@ -50,7 +50,7 @@ public class LeaveItems extends View {
         }
 
     private void leaveFood() {
-        //remove statement? (What about keyboard.nextInt(); ???
+        //remove System.in statement? (What about keyboard.nextInt(); ???
         Scanner keyboard = new Scanner(System.in);
         boolean valid = false;
 

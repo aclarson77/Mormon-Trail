@@ -91,7 +91,6 @@ public class MainMenuView extends View {
 
         InGameMenu gameMenu = new InGameMenu();
         gameMenu.display();
-        //System.out.println("*** startSaveGame function called ***");
     }
     
 }
