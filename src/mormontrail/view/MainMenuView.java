@@ -78,7 +78,20 @@ public class MainMenuView extends View {
     }
 
     private void saveGame() {
-        this.console.println("*** startSaveGame function called ***");
+        
+        this.console.println("\n\nEnter the file path for file where the game"
+                + "is to be saved");
+        String filePath = this.getInput();
+        
+        try {
+            GameControl.saveGame(MormonTrail.getCurrentGame(), filePath);
+        } catch (Exception ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
+
+        InGameMenu gameMenu = new InGameMenu();
+        gameMenu.display();
+        //System.out.println("*** startSaveGame function called ***");
     }
     
 }

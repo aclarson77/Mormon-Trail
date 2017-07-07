@@ -5,8 +5,13 @@
  */
 package mormontrail.control;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import mormontrail.MormonTrail;
+import mormontrail.exceptions.GameControlException;
 import mormontrail.model.Game;
 import mormontrail.model.InventoryItem;
 import mormontrail.model.Map;
@@ -125,6 +130,30 @@ public class GameControl {
         
         return player;   
     }
+    
+    public static void saveGame(Game game, String filepath)
+            throws mormontrail.exceptions.GameControlException {
+        try(FileOutputStream fops = new FileOutputStream(filepath)) {
+            ObjectOutputStream output = new ObjectOutputStream(fops);
+            
+            output.writeObject(game);
+        } catch(Exception e) {
+            throw new mormontrail.exceptions.GameControlException(e.getMessage());
+        }
+    }
+    
+    public static void getSavedGame(String filepath)
+                throws GameControlException {
+            Game game = null;
+            
+            try(FileInputStream fips = new FileInputStream(filepath)) {
+                ObjectInputStream input = new ObjectInputStream(fips);
+            } catch (Exception e) {
+                throw new GameControlException(e.getMessage());
+            }
+            
+            mormontrail.MormonTrail.setCurrentGame(game);  
+        }
 }
     
 
