@@ -121,8 +121,8 @@ public class Store extends View {
 //        
 //    }
             this.console.println("Process of purchase is not available yet");
-            //true or false??? Error - requires boolean value
-            getInventory(true);
+
+            getInventory(false);
             return false;
         }
         return false;
