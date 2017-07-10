@@ -5,8 +5,14 @@
  */
 package mormontrail.view;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import mormontrail.MormonTrail;
 import mormontrail.control.MapControl;
 import mormontrail.model.Game;
@@ -37,6 +43,7 @@ public class InGameMenu extends View {
                   + "\nP - Purchase Supplies (at store, if at beginning of trail)" //
                   + "\nB - Buy Supplies (at fort, if along the trail)"
                   + "\nL - Leave Items Behind"
+                  + "\nE - Print Inventory Item List"
                   + "\nS - Save Game"
                   + "\nQ - Back to main menu"
                   + "\n--------------------------------------");
@@ -74,6 +81,9 @@ public class InGameMenu extends View {
                 break;
             case "L":
                 this.leaveItems();
+                break;
+            case "E":
+                this.printInventory();
                 break;
             case "S":
                 this.saveGame(); // Currently GamesLog. GamesLog will be in MainMenuView once we hook our individual assignments.
@@ -211,7 +221,7 @@ public class InGameMenu extends View {
         this.console.println("Your total inventory weight: " + totalWeight);
         // and total weight on the wagon is:
     }
-
+    
     public void displayMap() {
         String leftIndicator;
         String rightIndicator;
@@ -296,6 +306,37 @@ public class InGameMenu extends View {
         
         LeaveItems leaveItems = new LeaveItems();
         leaveItems.display();
+    }
+    
+    private void printInventory() {
+
+//        this.console.println("\n\nEnter the file path for the file to be saved: ");
+//        String filePath = this.getInput();
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Input file path: ");
+        String fileName = sc.next();
+        File inputFile = new File(fileName);
+        
+        Game game = MormonTrail.getCurrentGame();
+        ArrayList<InventoryItem> inventory = game.getInventory();
+        //FileWriter outFile = null;
+        String fileLocation = "InventoryReport.txt";
+        
+
+        try (PrintWriter out = new PrintWriter(fileLocation)){
+            
+            out.println("\n\n      Inventory Item Report        ");
+            out.printf("%n%-20s%10s", "Description", "Weight");
+            out.printf("%n%-20s%10s", "-----------", "------");
+        
+        for (InventoryItem item : inventory) {
+            out.printf("%n%-20s%7s", item.getInventoryType().getDescription()
+                                         , item.getWeight());
+            }
+        } catch (IOException ex) {
+            System.out.println("I/O Error: " + ex.getMessage());
+        } 
     }
     
     //saveGame should be out of the game - in MainMenuView
