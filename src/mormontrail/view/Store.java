@@ -5,9 +5,15 @@
  */
 package mormontrail.view;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import mormontrail.MormonTrail;
+import mormontrail.control.InventoryControl;
 import mormontrail.model.Game;
 import mormontrail.model.InventoryItem;
 
@@ -44,15 +50,15 @@ public class Store extends View {
         int totalWeight = 0;
 //        Game game = MormonTrail.getCurrentGame();
 //        ArrayList<InventoryItem> inventory = game.getInventory();
-        sInventory += "\n| Welcome to the " + storeName + "!";
-        sInventory += ("\n      LIST OF INVENTORY ITEMS");
+        sInventory += "\r\n| Welcome to the " + storeName + "!";
+        sInventory += ("\r\n      LIST OF INVENTORY ITEMS");
         line = new StringBuilder("                                     ");
         line.insert(0, "ITEM");
         line.insert(5, "DESCRIPTION");
         line.insert(20, "PRICE PER POUND");
         line.insert(40, "IN STOCK (POUNDS)");
 
-        sInventory += ("\n" + line.toString());
+        sInventory += ("\r\n" + line.toString());
 
         for (InventoryItem item : storeInventory) {
             line = new StringBuilder("                                      ");
@@ -61,12 +67,14 @@ public class Store extends View {
             line.insert(20, item.getPricePerPound());
             line.insert(40, item.getWeight());
             totalWeight += item.getWeight();
-            sInventory += ("\n" + line.toString());
+            sInventory += ("\r\n" + line.toString());
             counter++;
         }
-        sInventory += ("\nThe total weight of your inventory is " + totalWeight + " lbs.");
-        if (!toFile)
-            sInventory += ("\nPlease enter the item you wish to purchase (Q to Leave the Store OR S to Save to File): ");
+        sInventory += ("\r\nThe total weight of your inventory is " + totalWeight + " lbs.");
+        if (!toFile) {
+            sInventory += ("\r\nPlease enter the item you wish to purchase (Q to Leave the Store OR S to Save to File): ");
+            sInventory += ("\r\nCurrent funds available: " + MormonTrail.getCurrentGame().getPlayer().getCash());
+        }
         displayMessage = sInventory;
         return;
     }
@@ -75,13 +83,40 @@ public class Store extends View {
     public boolean doAction(String value) {
 
         int selectedItem;
+        String filePrompt = "";
 
         value = value.toUpperCase();
-        if (value == "S") {
-           getInventory(true);
-           //printing on line 83 - prompt for file name (example.txt), if prompt length > 0 , save displayMessage to a file -- no for-each needed (taken care of) AS WELL AS "S".
-           
-           getInventory(false);
+        if ("S".equals(value)) {
+            
+            getInventory(true);
+            //printing on line 84 - prompt for file name (example.txt), if prompt length > 0 , save displayMessage to a file -- no for-each needed (taken care of) AS WELL AS "S".
+            //suggest (example.txt for a file name)
+            this.console.println("Please enter a File Name to Save (example.txt): ");
+            try {
+                filePrompt = keyboard.readLine();
+            } catch (IOException ex) {
+                Logger.getLogger(Store.class.getName()).log(Level.SEVERE, null, ex);
+                return false;
+            }
+            filePrompt = filePrompt.trim();
+            if (filePrompt.length() == 0) {
+                this.console.println("You must enter a valid File Name.");
+                return false;
+            }
+            try(PrintWriter fileSave = new PrintWriter(filePrompt)) {
+                
+                
+                
+//                File fileName = new File(filePrompt);
+                //save to file
+//                PrintWriter fileSave = new PrintWriter(fileName);
+                fileSave.print(displayMessage);
+                this.console.println("You have successfully saved " + filePrompt);
+                getInventory(false);
+                return true;
+            } catch (IOException ex) {
+                ErrorView.display(this.getClass().getName(), "Error reading input.");
+            }
         } else {
 
             try {
@@ -98,7 +133,42 @@ public class Store extends View {
 
             // add logic: price, weight,
             InventoryItem selectedInventoryItem = storeInventory.get(selectedItem);
-
+            this.console.println("How many pounds would you like to buy?: ");
+            int pounds = 0;
+            String sPounds = "";
+            try {
+                sPounds = keyboard.readLine();
+            } catch (IOException ex) {
+                Logger.getLogger(Store.class.getName()).log(Level.SEVERE, null, ex);
+                ErrorView.display(this.getClass().getName(), "You must enter a valid number, please try again");
+                return false;
+            }
+            try {
+                pounds = Integer.parseInt(sPounds);
+            }
+            catch (NumberFormatException nf) {
+                ErrorView.display(this.getClass().getName(), 
+                "You must enter a valid number, please try again.");
+                return false;
+            }
+            
+            if (pounds == 0) {
+                ErrorView.display(this.getClass().getName(), 
+                "There's nothing to buy here!");
+                return false;
+            }
+            
+            double currentCash = MormonTrail.getCurrentGame().getPlayer().getCash();
+            
+            if (selectedInventoryItem.getPricePerPound() * pounds > currentCash) {
+                ErrorView.display(this.getClass().getName(), 
+                "You don't have enough money!");
+                return false;
+            }
+            
+            InventoryControl.addToWagon(selectedInventoryItem, pounds);
+            currentCash -= selectedInventoryItem.getPricePerPound() * pounds;
+            MormonTrail.getCurrentGame().getPlayer().setCash(currentCash);
             //
             //numeric exception handling
             //todo: parse value to integer, process integer to purchase food.
@@ -121,10 +191,8 @@ public class Store extends View {
 //        
 //    }
             this.console.println("Process of purchase is not available yet");
-
-            getInventory(false);
-            return false;
         }
+        getInventory(false);
         return false;
     }
 

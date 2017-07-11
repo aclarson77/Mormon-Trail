@@ -29,7 +29,6 @@ public class Game implements Serializable {
     public Game() {
     }
     
-    
     public int getBestScore() {
         return bestScore;
     }

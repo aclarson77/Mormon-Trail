@@ -16,12 +16,14 @@ public class Player implements Serializable {
     
     private String name;
     private int bestScore;
+    private double cash;
     
     private Game[] game;
 
     public Player() {
+        
+        cash = 200;
     }
-    
     
     public String getName() {
         return name;
@@ -45,6 +47,14 @@ public class Player implements Serializable {
 
     public void setGame(Game[] game) {
         this.game = game;
+    }
+
+    public double getCash() {
+        return cash;
+    }
+
+    public void setCash(double cash) {
+        this.cash = cash;
     }
 
     @Override
