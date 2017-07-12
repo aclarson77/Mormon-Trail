@@ -5,6 +5,7 @@
  */
 package mormontrail.view;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import mormontrail.model.Actor;
 
@@ -118,7 +119,41 @@ public class RegisterNames extends View {
         //If 'Yes', transition to Store view.
         //We need to store the names in the Actors.
         if (validation.toUpperCase().equals("Y")) {
+            ArrayList<Actor> actors = mormontrail.MormonTrail.getCurrentGame().getActors();
+            Actor actor = new Actor();
+            actor.setName(name1);
+            actor.setDescription("wagon leader");
+            actor.setHealth(100);
+            actor.setWeight(230);
+            actors.add(actor);
             
+            actor = new Actor();
+            actor.setName(name2);
+            actor.setDescription("wagon party 1");
+            actor.setHealth(100);
+            actor.setWeight(200);
+            actors.add(actor);
+            
+            actor = new Actor();
+            actor.setName(name3);
+            actor.setDescription("wagon party 2");
+            actor.setHealth(100);
+            actor.setWeight(180);
+            actors.add(actor);
+            
+            actor = new Actor();
+            actor.setName(name4);
+            actor.setDescription("wagon party 3");
+            actor.setHealth(100);
+            actor.setWeight(190);
+            actors.add(actor);
+            
+            actor = new Actor();
+            actor.setName(name5);
+            actor.setDescription("wagon party 4");
+            actor.setHealth(100);
+            actor.setWeight(205);
+            actors.add(actor);
 //            Store store = new Store();
 //            store.setStoreName("General Store"); //hard-coded for now.
 //            store.getInventory();
