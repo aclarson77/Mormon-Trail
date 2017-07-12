@@ -12,6 +12,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import mormontrail.MormonTrail;
 import mormontrail.exceptions.GameControlException;
+import mormontrail.model.Actor;
 import mormontrail.model.Game;
 import mormontrail.model.InventoryItem;
 import mormontrail.model.Map;
@@ -50,6 +51,9 @@ public class GameControl {
         item.setWeight(10);
         inventoryList.add(item);  
     
+    ArrayList<Actor> actors = new ArrayList<Actor>();
+    game.setActors(actors);
+        
     Wagon wagon = new Wagon();
     game.setWagon(wagon);
     
