@@ -20,7 +20,8 @@ public class Scene implements Serializable {
     private String mapSymbol;
     private ArrayList<Actor> actors;
     private ArrayList<InventoryItem> inventoryItems;
-
+    private RandomEvent event;
+    
     public Scene() {
     }
 
@@ -65,6 +66,14 @@ public class Scene implements Serializable {
         this.inventoryItems = inventoryItems;
     }
 
+    public RandomEvent getEvent() {
+        return event;
+    }
+
+    public void setEvent(RandomEvent event) {
+        this.event = event;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 3;
