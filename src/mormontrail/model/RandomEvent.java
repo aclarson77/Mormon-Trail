@@ -14,79 +14,57 @@ import java.util.Objects;
  */
 public class RandomEvent implements Serializable {
     
-    private String negativeEvent;
-    private String positiveEvent;
-    private String nothingHappens;
+    private String description;
+    private double foodWeightChange;
+    private double ammoAmountChange;
+    private double clothesAmountChange;
+    private boolean defensable;
 
     public RandomEvent() {
+        foodWeightChange = 0;
+        ammoAmountChange = 0;
+        clothesAmountChange = 0;
+        defensable = false;
     }
 
-    
-    
-    public String getNegativeEvent() {
-        return negativeEvent;
+    public String getDescription() {
+        return description;
     }
 
-    public String getPositiveEvent() {
-        return positiveEvent;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getNothingHappens() {
-        return nothingHappens;
+    public double getFoodWeightChange() {
+        return foodWeightChange;
     }
 
-    public void setNegativeEvent(String negativeEvent) {
-        this.negativeEvent = negativeEvent;
+    public void setFoodWeightChange(double foodWeightChange) {
+        this.foodWeightChange = foodWeightChange;
     }
 
-    public void setPositiveEvent(String positiveEvent) {
-        this.positiveEvent = positiveEvent;
+    public double getAmmoAmountChange() {
+        return ammoAmountChange;
     }
 
-    public void setNothingHappens(String nothingHappens) {
-        this.nothingHappens = nothingHappens;
+    public void setAmmoAmountChange(double ammoAmountChange) {
+        this.ammoAmountChange = ammoAmountChange;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 19 * hash + Objects.hashCode(this.negativeEvent);
-        hash = 19 * hash + Objects.hashCode(this.positiveEvent);
-        hash = 19 * hash + Objects.hashCode(this.nothingHappens);
-        return hash;
+    public double getClothesAmountChange() {
+        return clothesAmountChange;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final RandomEvent other = (RandomEvent) obj;
-        if (!Objects.equals(this.negativeEvent, other.negativeEvent)) {
-            return false;
-        }
-        if (!Objects.equals(this.positiveEvent, other.positiveEvent)) {
-            return false;
-        }
-        if (!Objects.equals(this.nothingHappens, other.nothingHappens)) {
-            return false;
-        }
-        return true;
+    public void setClothesAmountChange(double clothesAmountChange) {
+        this.clothesAmountChange = clothesAmountChange;
     }
 
-    @Override
-    public String toString() {
-        return "RandomEvent{" + "negativeEvent=" + negativeEvent + ", positiveEvent=" + positiveEvent + ", nothingHappens=" + nothingHappens + '}';
+    public boolean isDefensable() {
+        return defensable;
     }
-    
-    
-    
-    
-    
+
+    public void setDefensable(boolean defensable) {
+        this.defensable = defensable;
+    }
+
 }
