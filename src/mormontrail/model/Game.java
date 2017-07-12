@@ -21,13 +21,23 @@ public class Game implements Serializable {
     private Player player;
     private Wagon wagon;
     //do we need this?
-    private Actor actor;
+    private ArrayList<Actor> actors;
     private Map map;
     
     private ArrayList<InventoryItem> inventory;
 
     public Game() {
     }
+
+    public ArrayList<Actor> getActors() {
+        return actors;
+    }
+
+    public void setActors(ArrayList<Actor> actors) {
+        this.actors = actors;
+    }
+    
+    
     
     public int getBestScore() {
         return bestScore;
@@ -68,15 +78,7 @@ public class Game implements Serializable {
     public void setWagon(Wagon wagon) {
         this.wagon = wagon;
     }
-
-    public Actor getActor() {
-        return actor;
-    }
-
-    public void setActor(Actor actor) {
-        this.actor = actor;
-    }
-
+    
     public Map getMap() {
         return map;
     }
