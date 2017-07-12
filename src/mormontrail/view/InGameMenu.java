@@ -191,6 +191,9 @@ public class InGameMenu extends View {
                 store.getInventory(false);
                 store.display();
                 break;  
+            default: 
+                SceneView sceneView = new SceneView();
+                sceneView.display();
         }
         displayMap();
         return false;
