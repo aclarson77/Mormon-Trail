@@ -14,6 +14,7 @@ import java.util.ArrayList;
  */
 public class Wagon implements Serializable {
     
+    private double minWeight;
     private double maxWeight;
     ArrayList<InventoryItem> inventoryItems;
     private double wagonWeight;
@@ -21,6 +22,7 @@ public class Wagon implements Serializable {
     public Wagon() {
         
         //what else should we include?
+        this.minWeight = 0;
         this.maxWeight = 2525;
         this.wagonWeight = 1000;
         //properties to take from store to wagon - ArrayList<InventoryItem>
