@@ -22,17 +22,26 @@ public class Actor implements Serializable {
     
 
 // class instance variables
-    private final String description;
+    private String description;
+    private String name;
     private int health;
+    private int weight;
 
-    Actor(String description) {
+    
+    public Actor(String description) {
         this.description = description;
+    }
+    public Actor() {
     }
     
     public String getDescription() {
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
     public int getHealth() {
         return health;
     }
@@ -41,6 +50,24 @@ public class Actor implements Serializable {
         this.health = health;
     }
 
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    
+    
     @Override
     public String toString() {
         return "Actor{" + "description=" + description + ", health=" + health + '}';
