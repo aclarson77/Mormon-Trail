@@ -10,6 +10,7 @@ import mormontrail.model.InventoryItem;
 import mormontrail.model.InventoryType;
 import mormontrail.model.Location;
 import mormontrail.model.Map;
+import mormontrail.model.RandomEvent;
 import mormontrail.model.Scene;
 import mormontrail.model.SceneType;
 
@@ -167,6 +168,13 @@ public static void movePlayer(Map map, int row, int column) throws mormontrail.e
                 + "Sugar Creek is the staging area for the great trek westward. "
                     );
         sugarCreekScene.setMapSymbol("SC");
+        
+        RandomEvent event = new RandomEvent();
+        event.setDescription("A theif comes and steals food from your inventory.");
+        event.setFoodWeightChange(-5);
+        event.setDefensable(true);
+        sugarCreekScene.setEvent(event);
+                
         scenes[SceneType.sugarCreek.ordinal()] = sugarCreekScene;
 
         Scene gardenGroveScene = new Scene();
