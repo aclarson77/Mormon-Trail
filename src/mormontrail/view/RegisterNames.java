@@ -36,7 +36,7 @@ public class RegisterNames extends View {
         this.namePrompt4 = "\n4) Please enter another name (Q to Quit): ";
         this.namePrompt5 = "\n5) Please enter another name (Q to Quit): ";
         this.validationPrompt = "\n(Y/N) Are these names correct? ";
-        this.banner = "\n**************************************************************"
+        this.banner = "\n*************************************************************"
         +"\n*                                                           *"       
         +"\n* Welcome to the Company! Please register your name as the  *"
         +"\n* Wagon Leader, along with any others within your group.    *"

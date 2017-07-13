@@ -49,6 +49,11 @@ public class GameControl {
         item = new InventoryItem();
         item.setInventoryType(InventoryType.clothes);
         item.setWeight(10);
+        inventoryList.add(item);
+        
+        item = new InventoryItem();
+        item.setInventoryType(InventoryType.ammo);
+        item.setWeight(15);
         inventoryList.add(item);  
     
     ArrayList<Actor> actors = new ArrayList<Actor>();

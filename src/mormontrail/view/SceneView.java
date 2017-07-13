@@ -21,7 +21,7 @@ public class SceneView extends View {
     boolean lossOfInventory = false;
 
     public SceneView() {
-        super("There is no event at this scene. Press Q to quit.");
+        super("There is no event at this scene (Press A to Advance Along the Trail OR Q to Quit.");
         
         currentScene = mormontrail.MormonTrail.getCurrentGame().getMap().getCurrentScene();
         if(currentScene.getEvent() == null)
@@ -42,7 +42,7 @@ public class SceneView extends View {
             }
         }
         if (!defendSelf) {
-            displayMessage += "\nEnter C to continue";
+            displayMessage += "\nEnter C to Continue";
         }
     }
 
@@ -78,7 +78,7 @@ public class SceneView extends View {
                     
             case "N":
                 this.console.println("");
-                //Remove loss of inventory from wagon.
+                //Remove loss of inventory from wagon. Use for-each loop
                 removeFromWagon();
                 return true;
             default:

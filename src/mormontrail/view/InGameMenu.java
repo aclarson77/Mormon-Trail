@@ -112,7 +112,9 @@ public class InGameMenu extends View {
                     + "\n Church leaders have given you some basic supplies to help you "
                     + "\n get started along your journey. However, they will not be enough" 
                     + "\n for you to complete your entire trek. The following have been "
-                    + "\n provided to you. "
+                    + "\n provided to you. Please visit the Store or scavenge for supplies "
+                    + "\n along the trail."
+                    + "\n\nItems purchased or collected along the trail will be updated here."
                     + "\n------------------------------------------------------------------");
 
         this.console.println("\n  LIST OF CURRENT INVENTORY ITEMS");
@@ -135,14 +137,13 @@ public class InGameMenu extends View {
             this.console.println(line.toString());
         }
         this.console.println("");     
-        this.console.println("Your total inventory weight is " + totalWeight + " pounds."
-                            + "\n ");
+        this.console.println("Your total inventory weight is " + totalWeight + " pounds.");
                             
         
         totalWeight = totalWeight + wagonWeight;
         
         this.console.println("Your combined wagon and invetory weight is " + totalWeight + " pounds."
-                            + "\n You will now purchase your remaining supplies at the Nauvoo Store.  "
+                            + "\n\nIf you need more supplies, visit a nearby Store along the trail."
                             + "\n------------------------------------------------------------------");
         
         

@@ -70,7 +70,7 @@ public class Store extends View {
             sInventory += ("\r\n" + line.toString());
             counter++;
         }
-        sInventory += ("\r\nThe total weight of your inventory is " + totalWeight + " lbs.");
+        sInventory += ("\r\nThe total weight of the Store's Inventory is " + totalWeight + " lbs.");
         if (!toFile) {
             sInventory += ("\r\nPlease enter the item you wish to purchase (Q to Leave the Store OR S to Save to File): ");
             sInventory += ("\r\nCurrent funds available: " + MormonTrail.getCurrentGame().getPlayer().getCash());

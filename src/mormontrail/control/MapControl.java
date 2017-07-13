@@ -70,8 +70,8 @@ public static void movePlayer(Map map, int row, int column) throws mormontrail.e
         Scene[] scenes = new Scene[SceneType.values().length];
 
         Scene nauvooScene = new Scene();
-        nauvooScene.setDescription("Nauvoo, Illinois - Welcome to Nauvoo!");
-        nauvooScene.setMapSymbol("ST");
+        nauvooScene.setDescription("Nauvoo, Illinois - Welcome to Nauvoo! (Press A to Advance to the Store)");
+        nauvooScene.setMapSymbol("NV");
         scenes[SceneType.nauvoo.ordinal()] = nauvooScene;
 
         //store with inventory list within (pass to view if we need to use as part of view)
@@ -170,7 +170,7 @@ public static void movePlayer(Map map, int row, int column) throws mormontrail.e
         sugarCreekScene.setMapSymbol("SC");
         
         RandomEvent event = new RandomEvent();
-        event.setDescription("A theif comes and steals food from your inventory.");
+        event.setDescription("\nA thief comes and steals food from your inventory.");
         event.setFoodWeightChange(-5);
         event.setDefensable(true);
         sugarCreekScene.setEvent(event);
