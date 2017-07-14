@@ -20,6 +20,7 @@ import mormontrail.model.InventoryItem;
 import mormontrail.model.InventoryType;
 import mormontrail.model.Location;
 import mormontrail.model.Map;
+import mormontrail.model.Player;
 
 /**
  *
@@ -159,7 +160,10 @@ public class InGameMenu extends View {
                 }
             
             if(map.getCurrentRow() == 1 && map.getCurrentColumn() == 12) {
-                this.console.println("This is the place! You are at the end of the game.");
+                String player = mormontrail.MormonTrail.getCurrentGame().getPlayer().getName();
+                this.console.println("*** This is the place! ***"
+                        + "\nYou are at the end of the game. "
+                        + "\nCongratulations, " + player + ". You Win!");
                 // This is the place!
                 return true;
             }

@@ -19,52 +19,52 @@ import mormontrail.model.SceneType;
  * @author Joshua
  */
 public class MapControl {
-    
-    public static Map createMap() {
-        
-        Map map = new Map(2, 13);
-        
-        Scene[] scenes = createScenes();
-        
-        assignScenesToLocations(map, scenes);
-        
-        return map;       
-    }
-    
-public static void movePlayerToStartingLocation(Map map) throws mormontrail.exceptions.MapControlException {
-   // If starting location is not supposed to be 0,0 then use the correct values here.
-   movePlayer(map, 0, 0); // or instead of 0,0 you can select a different starting location
-}
 
-public static void movePlayer(Map map, int row, int column) throws mormontrail.exceptions.MapControlException {
-   
-    if (map == null){
-        throw new mormontrail.exceptions.MapControlException("Map is not intitialized.");
-        //*****throw new mapcontrolexception ("map is not initialized")
+    public static Map createMap() {
+
+        Map map = new Map(2, 13);
+
+        Scene[] scenes = createScenes();
+
+        assignScenesToLocations(map, scenes);
+
+        return map;
     }
-    
-    if (row < 0 || row >= map.getRowCount()) {
-        throw new mormontrail.exceptions.MapControlException("Row is out of bounds.");
-     //*****throw new mapcontrolexception("row is out of bounds")   
-    
+
+    public static void movePlayerToStartingLocation(Map map) throws mormontrail.exceptions.MapControlException {
+        // If starting location is not supposed to be 0,0 then use the correct values here.
+        movePlayer(map, 0, 0); // or instead of 0,0 you can select a different starting location
     }
-    
-    if (column < 0 || column >= map.getColumnCount()) {
-        throw new mormontrail.exceptions.MapControlException("Column is out of bounds.");
-     //*****throw new mapcontrolexception("column is out of bounds")   
-    
+
+    public static void movePlayer(Map map, int row, int column) throws mormontrail.exceptions.MapControlException {
+
+        if (map == null) {
+            throw new mormontrail.exceptions.MapControlException("Map is not intitialized.");
+            //*****throw new mapcontrolexception ("map is not initialized")
+        }
+
+        if (row < 0 || row >= map.getRowCount()) {
+            throw new mormontrail.exceptions.MapControlException("Row is out of bounds.");
+            //*****throw new mapcontrolexception("row is out of bounds")   
+
+        }
+
+        if (column < 0 || column >= map.getColumnCount()) {
+            throw new mormontrail.exceptions.MapControlException("Column is out of bounds.");
+            //*****throw new mapcontrolexception("column is out of bounds")   
+
+        }
+
+        map.setCurrentLocation(map.getLocations()[row][column]);
+        map.getCurrentLocation().setVisited(true);
+        map.setCurrentRow(row);
+        map.setCurrentColumn(column);
+        map.setCurrentScene(map.getLocations()[row][column].getScene());
+
+        //*****throw exception if row or column less than 0 or greater than map.rowcount or map.columncount
     }
-    
-   map.setCurrentLocation(map.getLocations()[row][column]);
-   map.getCurrentLocation().setVisited(true);
-   map.setCurrentRow(row);
-   map.setCurrentColumn(column);
-   map.setCurrentScene(map.getLocations()[row][column].getScene());
-   
-   //*****throw exception if row or column less than 0 or greater than map.rowcount or map.columncount
-   
-}
 //https://en.wikipedia.org/wiki/Mormon_Trail
+
     private static Scene[] createScenes() {
 
         Scene[] scenes = new Scene[SceneType.values().length];
@@ -85,29 +85,28 @@ public static void movePlayer(Map map, int row, int column) throws mormontrail.e
         item.setPricePerPound(.20);
         item.setName("Beans");
         inventoryItems.add(item);
-        
+
         item = new InventoryItem();
         item.setInventoryType(InventoryType.food);
         item.setWeight(15);
         item.setPricePerPound(.25);
         item.setName("Cornmeal");
         inventoryItems.add(item);
-        
+
         item = new InventoryItem();
         item.setInventoryType(InventoryType.food);
         item.setWeight(20);
         item.setPricePerPound(.30);
         item.setName("Potatoes");
         inventoryItems.add(item);
-        
+
         item = new InventoryItem();
         item.setInventoryType(InventoryType.food);
         item.setWeight(25);
         item.setPricePerPound(.35);
         item.setName("Chicken");
         inventoryItems.add(item);
-        
-        
+
         //set new properties for inventory item for (food,ammo,and clothes, like weight) - do
         //several times (5-6 items, representing what's going to be in the store)
         //*** maybe we have a title of the resource (Food, Ammo, Clothes) with each subitem underneath, respectively?
@@ -118,7 +117,7 @@ public static void movePlayer(Map map, int row, int column) throws mormontrail.e
         //set currentQuantity - 2, for example, and have less items and added to inventory.
         item.setName("Pig");
         inventoryItems.add(item);
-        
+
         item = new InventoryItem();
         item.setInventoryType(InventoryType.ammo);
         item.setWeight(35);
@@ -126,7 +125,7 @@ public static void movePlayer(Map map, int row, int column) throws mormontrail.e
         //set currentQuantity - 2, for example, and have less items and added to inventory.
         item.setName("Pistol Rounds");
         inventoryItems.add(item);
-        
+
         item = new InventoryItem();
         item.setInventoryType(InventoryType.ammo);
         item.setWeight(45);
@@ -134,7 +133,7 @@ public static void movePlayer(Map map, int row, int column) throws mormontrail.e
         //set currentQuantity - 2, for example, and have less items and added to inventory.
         item.setName("Rifle Rounds");
         inventoryItems.add(item);
-        
+
         item = new InventoryItem();
         item.setInventoryType(InventoryType.clothes);
         item.setWeight(25);
@@ -142,7 +141,7 @@ public static void movePlayer(Map map, int row, int column) throws mormontrail.e
         //set currentQuantity - 2, for example, and have less items and added to inventory.
         item.setName("Shirts");
         inventoryItems.add(item);
-        
+
         item = new InventoryItem();
         item.setInventoryType(InventoryType.clothes);
         item.setWeight(30);
@@ -150,7 +149,7 @@ public static void movePlayer(Map map, int row, int column) throws mormontrail.e
         //set currentQuantity - 2, for example, and have less items and added to inventory.
         item.setName("Pants");
         inventoryItems.add(item);
-        
+
         item = new InventoryItem();
         item.setInventoryType(InventoryType.clothes);
         item.setWeight(15);
@@ -158,7 +157,7 @@ public static void movePlayer(Map map, int row, int column) throws mormontrail.e
         //set currentQuantity - 2, for example, and have less items and added to inventory.
         item.setName("Coats");
         inventoryItems.add(item);
-        
+
         nauvooStoreScene.setInventoryItems(inventoryItems);
         scenes[SceneType.nauvooStore.ordinal()] = nauvooStoreScene;
 
@@ -166,16 +165,16 @@ public static void movePlayer(Map map, int row, int column) throws mormontrail.e
         sugarCreekScene.setDescription("Sugar Creek Camp, Iowa - "
                 + "Just on the other side of the Mississippi River from Nauvoo, "
                 + "Sugar Creek is the staging area for the great trek westward. "
-                    );
+        );
         sugarCreekScene.setMapSymbol("SC");
-        
+
         RandomEvent event = new RandomEvent();
         event.setDescription("\n***ALERT!*** A thief comes in the night and attempts to steal"
                 + " from your Wagon's Inventory!");
-        event.setFoodWeightChange(-5);
+        event.setFoodWeightChange(-3);
         event.setDefensable(true);
         sugarCreekScene.setEvent(event);
-                
+
         scenes[SceneType.sugarCreek.ordinal()] = sugarCreekScene;
 
         Scene gardenGroveScene = new Scene();
@@ -183,6 +182,15 @@ public static void movePlayer(Map map, int row, int column) throws mormontrail.e
                 + "The first semi-permanent settlement, with 715 acres of food planted"
                 + "for passing pioneers.");
         gardenGroveScene.setMapSymbol("GG");
+
+        event = new RandomEvent();
+        event.setDescription("\n***ALERT!*** While traveling, someone noticed that you were cold "
+                + "and you needed more clothing to keep yourself warm. "
+                + "Some Clothes were added to your Wagon's Inventory.");
+        event.setClothesAmountChange(3);
+        event.setDefensable(false);
+        gardenGroveScene.setEvent(event);
+
         scenes[SceneType.gardenGrove.ordinal()] = gardenGroveScene;
 
         Scene richardsonPointScene = new Scene();
@@ -190,6 +198,14 @@ public static void movePlayer(Map map, int row, int column) throws mormontrail.e
                 + "After fording the Des Moines River, you arrive in the wooded area"
                 + "known as Richardson's point.");
         richardsonPointScene.setMapSymbol("RP");
+
+        event = new RandomEvent();
+        event.setDescription("\n***ALERT!*** After crossing the Des Moines River,"
+                + "some of your ammo becomes damaged by water and is no longer usable.");
+        event.setAmmoAmountChange(-3);
+        event.setDefensable(false);
+        richardsonPointScene.setEvent(event);
+
         scenes[SceneType.richardsonPoint.ordinal()] = richardsonPointScene;
 
         Scene charitonRiverScene = new Scene();

@@ -21,7 +21,7 @@ public class SceneView extends View {
     boolean lossOfInventory = false;
 
     public SceneView() {
-        super("There is no event at this scene (Press A to Advance Along the Trail OR Q to Quit).");
+        super("There is no event at this scene (Press Q to return to the In-Game Menu).");
 
         currentScene = mormontrail.MormonTrail.getCurrentGame().getMap().getCurrentScene();
         ArrayList<InventoryItem> inventoryItems = mormontrail.MormonTrail.
@@ -41,12 +41,14 @@ public class SceneView extends View {
             if (currentScene.getEvent().isDefensable()) {
                 if (hasBullets()) {
                     defendSelf = true;
-                    displayMessage += "\nDo you want to defend yourself? (Y/N)";
+                    displayMessage += "\nDo you want to defend yourself? (Y/N)"
+                            + " - If 'Y', you must have Ammo within your Inventory";
                 }
             }
         }
         if (!defendSelf) {
-            displayMessage += "\nEnter C to Continue";
+            displayMessage += "\nPress Q to Continue";
+            return;
         }
     }
 
@@ -78,7 +80,9 @@ public class SceneView extends View {
                 if (defendSelf) {
                     //Remove x amount of ammo from wagon.  
                     removeBulletFromWagon();
-                    this.console.println("You have one less bullet, but you saved your possesions");
+                    this.console.println("\n*** You have one less bullet, but you "
+                            + "saved your possesions ***"
+                            + "\n");
                     return true;
                 }
 
@@ -86,8 +90,8 @@ public class SceneView extends View {
                 this.console.println("");
                 //Remove loss of inventory from wagon. Use for-each loop
                 removeFromWagon();
-                this.console.println("You've lost resources! Check your Wagon's "
-                        + "Inventory to see what's been removed."
+                this.console.println("*** You've lost resources! Check your Wagon's "
+                        + "Inventory to see what's been removed. ***"
                         + "\n");
                 return true;
             default:
