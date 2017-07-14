@@ -45,7 +45,7 @@ public class InGameMenu extends View {
                   + "\nL - Leave Items Behind"
                   + "\nE - Print Inventory Item List"
                   + "\nS - Save Game"
-                  + "\nQ - Back to main menu"
+                  + "\nQ - Back to Main Menu"
                   + "\n--------------------------------------");
     }
     

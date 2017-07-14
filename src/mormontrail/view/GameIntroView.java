@@ -18,19 +18,23 @@ public class GameIntroView extends View {
                   + "\n| Introduction Menu"
                   + "\n--------------------------------------"
                   + "\nH - Get Help on How to Play the Game"
-                  + "\nC - Continue to Actor Menu/Register with a Company"
+                  + "\nC - Continue to Register with a Company"
                   + "\nQ - Quit to Previous Menu"
                   + "\n--------------------------------------");
     
         this.console.println(
-        "\n*************************************************************"
-        +"\n*                                                           *"       
-        +"\n* Introduce the end user to the Pioneer Trek and the        *"
-        +"\n* situation leading up the exodus, as well as the option to *"
-        +"\n* Register - naming your actor - to join a Company.         *"
-        +"\n*                                                           *"
-        +"\n*************************************************************"
-        );
+        "\n**************************************************************"    
+        +"\n* Welcome to the Pioneer Trek!                               *"
+        +"\n*                                                            *"
+        +"\n* Our travels will be a test of faith to all those willing   *"
+        +"\n* to endure the hardship. We know that your situation has    *" 
+        +"\n* been rough getting to this point, so we will allocate      *"
+        +"\n* [25 Dollars] for you and your party to purchase items      *"
+        +"\n* from the Nauvoo Store.                                     *"
+        +"\n*                                                            *"
+        +"\n* But first, please Register yourself as the Wagon Leader,   *"
+        +"\n* along with any other members of your Company. Safe travels!*"
+        +"\n**************************************************************");
     }
 
     @Override

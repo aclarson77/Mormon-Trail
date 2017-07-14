@@ -140,7 +140,7 @@ public class StartProgramView extends View {
 
     private void displayNextView(Player player) {
         this.console.println("\n================================="
-                          + "\n Welcome to the game " + player.getName()
+                          + "\n Welcome to the Trail, " + player.getName() + "."
                           + "\n We hope you have a LOT of fun!"
                           + "\n================================="
                           );

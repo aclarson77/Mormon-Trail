@@ -170,7 +170,8 @@ public static void movePlayer(Map map, int row, int column) throws mormontrail.e
         sugarCreekScene.setMapSymbol("SC");
         
         RandomEvent event = new RandomEvent();
-        event.setDescription("\nA thief comes and steals food from your inventory.");
+        event.setDescription("\n***ALERT!*** A thief comes in the night and attempts to steal"
+                + " from your Wagon's Inventory!");
         event.setFoodWeightChange(-5);
         event.setDefensable(true);
         sugarCreekScene.setEvent(event);

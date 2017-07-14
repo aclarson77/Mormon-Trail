@@ -22,7 +22,7 @@ public class Player implements Serializable {
 
     public Player() {
         
-        cash = 50;
+        cash = 25;
     }
     
     public String getName() {

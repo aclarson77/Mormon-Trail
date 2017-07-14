@@ -1,0 +1,15 @@
+
+| Welcome to the Nauvoo City Store!
+      LIST OF INVENTORY ITEMS
+ITEM DESCRIPTION    PRICE PER POUND     IN STOCK (POUNDS)                           
+0    Beans          0.2                 10.0       
+1    Cornmeal       0.25                15.0           
+2    Potatoes       0.3                 20.0          
+3    Chicken        0.35                25.0          
+4    Pig            0.45                26.0      
+5    Pistol Rounds  0.25                30.0                
+6    Rifle Rounds   0.35                39.0               
+7    Shirts         0.75                18.0         
+8    Pants          0.85                22.0        
+9    Coats          1.15                15.0        
+The total weight of the Store's Inventory is 220 lbs.

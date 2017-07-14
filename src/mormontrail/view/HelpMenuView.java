@@ -49,11 +49,14 @@ public class HelpMenuView extends View {
 
     //do text
     private void about() {
-        this.console.println("Name of Game, Authors, History of Pioneer Trek");
+        this.console.println("\nAuthors: Joshua Nilsson, A.J. Hess"
+                + "\nGame Info: The Mormon Trail game allows the user to experience the hardship"
+                + "\nof the Mormon Pioneers and relive the Exodus to the Salt Lake Valley.");
     }
 
     //do text
     private void goal() {
-        this.console.println("*** goal function called ***");
+        this.console.println("\nReach the Salt Lake Valley and you win!"
+                + "\nTIP: Make sure to keep track of your Wagon's Weight and Inventory!");
     }
 }
