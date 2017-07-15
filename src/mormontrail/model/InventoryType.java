@@ -15,7 +15,7 @@ public enum InventoryType {
     bacon("Bacon"),
     food("Food"),
     ammo("Ammo"),
-    clothes("Set of Clothes");
+    clothes("Clothes");
     
     private String description;
     

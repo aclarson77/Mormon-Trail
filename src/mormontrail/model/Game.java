@@ -24,7 +24,7 @@ public class Game implements Serializable {
     private ArrayList<Actor> actors;
     private Map map;
     
-    private ArrayList<InventoryItem> inventory;
+//    private ArrayList<InventoryItem> inventory;
 
     public Game() {
     }
@@ -87,13 +87,13 @@ public class Game implements Serializable {
         this.map = map;
     }
     
-    public ArrayList<InventoryItem> getInventory() {
-        return inventory;
-    }
-
-    public void setInventory(ArrayList<InventoryItem> inventory) {
-        this.inventory = inventory;
-    }
+//    public ArrayList<InventoryItem> getInventory() {
+//        return inventory;
+//    }
+//
+//    public void setInventory(ArrayList<InventoryItem> inventory) {
+//        this.inventory = inventory;
+//    }
 
     @Override
     public int hashCode() {

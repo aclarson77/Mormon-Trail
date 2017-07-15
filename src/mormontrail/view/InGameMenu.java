@@ -106,7 +106,7 @@ public class InGameMenu extends View {
         StringBuilder line;
         
         Game game = MormonTrail.getCurrentGame();
-        ArrayList<InventoryItem> inventory = game.getInventory();
+        ArrayList<InventoryItem> inventory = game.getWagon().getInventoryItems();
         
         this.console.println("\n  "
                     + "\n------------------------------------------------------------------" 
@@ -131,7 +131,7 @@ public class InGameMenu extends View {
         
         for (InventoryItem item1 : inventory) {
             line = new StringBuilder("                                      ");
-            line.insert(5, item1.getInventoryType().getDescription());
+            line.insert(5, item1.getName());
             line.insert(20, item1.getWeight());
             totalWeight += item1.getWeight();
             
@@ -208,20 +208,22 @@ public class InGameMenu extends View {
         StringBuilder line;
         
         Game game = MormonTrail.getCurrentGame();
-        ArrayList<InventoryItem> inventory = game.getInventory();
+        ArrayList<InventoryItem> inventory = game.getWagon().getInventoryItems();
         
         this.console.println("\n******LIST OF INVENTORY ITEMS******");
-        line = new StringBuilder("                                     ");
-        line.insert(5, "DESCRIPTION");
-        line.insert(20, "WEIGHT");
+        line = new StringBuilder("                                                    ");
+        line.insert(1,"NAME");
+        line.insert(15, "DESCRIPTION");
+        line.insert(30, "WEIGHT");
         this.console.println(line.toString());
         
         int totalWeight = 0;
         
         for (InventoryItem item : inventory) {
             line = new StringBuilder("                                      ");
-            line.insert(5, item.getInventoryType().getDescription());
-            line.insert(20, item.getWeight());
+            line.insert(1, item.getName());
+            line.insert(15, item.getInventoryType().getDescription());
+            line.insert(30, item.getWeight());
             totalWeight += item.getWeight();
             
             this.console.println(line.toString());
@@ -327,7 +329,7 @@ public class InGameMenu extends View {
         File inputFile = new File(fileName);
         
         Game game = MormonTrail.getCurrentGame();
-        ArrayList<InventoryItem> inventory = game.getInventory();
+        ArrayList<InventoryItem> inventory = game.getWagon().getInventoryItems();
         //FileWriter outFile = null;
         String fileLocation = "InventoryReport.txt";
         
@@ -339,7 +341,7 @@ public class InGameMenu extends View {
             out.printf("%n%-20s%10s", "-----------", "------");
         
         for (InventoryItem item : inventory) {
-            out.printf("%n%-20s%7s", item.getInventoryType().getDescription()
+            out.printf("%n%-20s%7s", item.getName()
                                          , item.getWeight());
             }
         } catch (IOException ex) {
