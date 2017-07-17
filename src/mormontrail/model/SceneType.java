@@ -15,7 +15,6 @@ package mormontrail.model;
 public enum SceneType {
     
     //2 x 13 = 26 Scenes
-    //change names to fit scene
     nauvoo,
     nauvooStore,
     sugarCreek,
