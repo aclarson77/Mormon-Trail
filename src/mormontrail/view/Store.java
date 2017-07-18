@@ -89,8 +89,7 @@ public class Store extends View {
         if ("S".equals(value)) {
             
             getInventory(true);
-            //printing on line 84 - prompt for file name (example.txt), if prompt length > 0 , save displayMessage to a file -- no for-each needed (taken care of) AS WELL AS "S".
-            //suggest (example.txt for a file name)
+            
             this.console.println("Please enter a File Name to Save (example.txt): ");
             try {
                 filePrompt = keyboard.readLine();
@@ -98,18 +97,15 @@ public class Store extends View {
                 Logger.getLogger(Store.class.getName()).log(Level.SEVERE, null, ex);
                 return false;
             }
+            
             filePrompt = filePrompt.trim();
             if (filePrompt.length() == 0) {
                 this.console.println("You must enter a valid File Name.");
                 return false;
             }
+            
             try(PrintWriter fileSave = new PrintWriter(filePrompt)) {
-                
-                
-                
-//                File fileName = new File(filePrompt);
-                //save to file
-//                PrintWriter fileSave = new PrintWriter(fileName);
+
                 fileSave.print(displayMessage);
                 this.console.println("You have successfully saved " + filePrompt);
                 getInventory(false);
@@ -117,11 +113,13 @@ public class Store extends View {
             } catch (IOException ex) {
                 ErrorView.display(this.getClass().getName(), "Error reading input.");
             }
-        } else {
+        } 
+        
+        else {
 
             try {
                 selectedItem = Integer.parseInt(value);
-            } catch (NumberFormatException nf) { //lookup
+            } catch (NumberFormatException nf) {
                 ErrorView.display(this.getClass().getName(), 
                 "You must enter a valid number, please try again.");
                 return false;

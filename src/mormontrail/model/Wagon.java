@@ -27,10 +27,6 @@ public class Wagon implements Serializable {
         this.wagonWeight = 1000;
         //properties to take from store to wagon - ArrayList<InventoryItem>
         inventoryItems = new ArrayList<InventoryItem>();
-        //player health value with 100%
-        //calculate current weight of wagon - walk through inventory items with wagon weight to get total
-        
-        //getWagonWeight after RandomEvent - if too big or too little, you lose the game
     }
 
     public double getMaxWeight() {

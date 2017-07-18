@@ -58,7 +58,7 @@ public class StartProgramView extends View {
         this.console.println(
         "\n**************************************************************"
         +"\n*                                                           *"       
-        +"\n* This is the game of the Mormon Oregon Trial. In this game *"
+        +"\n* This is the game of the Mormon Oregon Trial.              *"
         +"\n* In this game you will help Mormon Pioneers travel to the  *"
         +"\n* great Salt Lake Valley.                                   *"
         +"\n*                                                           *"
